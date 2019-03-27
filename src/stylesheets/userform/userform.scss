@@ -1,0 +1,19 @@
+//making the div center to render the form in the middle 
+
+//colors
+$userformBG-color: #90A4AE;
+
+.flex-container {
+    height: 100%; 
+    background-color: $userformBG-color;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.row {
+    width: auto;
+    border: 1px black solid;
+}
