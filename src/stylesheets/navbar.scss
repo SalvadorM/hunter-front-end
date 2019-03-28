@@ -1,0 +1,25 @@
+$break-mobile: 420px;
+$break-desktop: 776px;
+
+.navbar-nav {
+    background-color: red;
+    display: none;
+}
+
+.nav-item {
+    display: inline-block;
+}
+
+.toggleMenu {
+    display: block;
+
+}
+
+@media screen and (min-width:$break-desktop){
+    .navbar-nav {
+        display: inline-block;
+    }
+    .nav-toggler{
+        display: none;
+    }
+}   

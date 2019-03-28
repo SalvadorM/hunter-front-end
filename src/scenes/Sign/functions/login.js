@@ -1,7 +1,10 @@
 import axios from '../../../utilities/axios'
 
 
-module.exports = test = (user) => {
+export const userLogin = (user) => {
+    return axios.post('/user/login', user)
+}
 
-    return axios.get('/user/all')
+export const userLogOut = () => {
+    return axios.post('/user/logout')
 }

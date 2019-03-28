@@ -1,13 +1,33 @@
 import React, {Component} from 'react'
 import {Redirect, NavLink} from 'react-router-dom'
-//compoenents
-import LoginForm from './forms/Login'
-import RegisterForm from './forms/Register'
+//components
+import LoginForm from './forms/LoginForm'
+import RegisterForm from './forms/RegisterForm'
 //styles
-import '../../stylesheets/userform/userform.scss'
+import '../../stylesheets/userform.scss'
+
+//functions
 
 class UserForm extends Component {
+    constructor(){
+        super()
 
+        //callback functions 
+        this.handleLoginRequest = this.handleLoginRequest.bind(this)
+        this.handleRegisterRequest = this.handleRegisterRequest.bind(this)
+
+    }
+
+    async componentDidMount(){
+    }
+
+    async handleRegisterRequest(){
+
+    }
+
+    async handleLoginRequest(){
+
+    }
     // Add a callback function that can render the problems the parent component
     render(){
 
@@ -18,17 +38,16 @@ class UserForm extends Component {
         // test the url to render correct form in single page 
         // loginform and register form return only FORMS!
         if(currentPage === 'login') {
-            currentForm = (<LoginForm />)
+            currentForm = (<LoginForm action={this.handleLoginRequest}/>)
         } else if(currentPage === 'register'){
-            currentForm = (<RegisterForm />)
+            currentForm = (<RegisterForm action={this.handleRegisterRequest}/>)
         }else {
             currentForm = (<Redirect to="/home"/>)
         }  
-
-        console.log(currentPage)
+        
         return(
         <div className="flex-container">
-            <div className="row">
+            <div className="form-container">
                 <div className="flex-item">
                 <div className="register-form">
                     <div className="form">
@@ -38,7 +57,6 @@ class UserForm extends Component {
                         </nav>
                         <div className="form-content">
                             {currentForm}
-                            <button type="button" className="btnSubmit">Submit</button>
                         </div>
                     </div>
                 </div>
