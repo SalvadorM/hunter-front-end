@@ -1,49 +1,53 @@
 //import user functions 
 import { userLogin, userLogOut } from '../scenes/Sign/functions/login'
 
-module.exports = {
-    /*
-    aunthenticate user 
-    @@Params
-    @username
-    @password
-    @cd         callback functions
-    */
-   async authenticate(username, password, cb){
-        const user ={ username, password }
-        //login user using functions
-        //setting localstorage to inform  user is authenticated
-        //set rest of info
-        try{
-            const loggedUser = await userLogin(user)
-            console.log(loggedUser)
-            localStorage.setItem('isAuthenticated', 'true')
-            localStorage.setItem('error', 'false')
-            //callback 
-            cb()
-        }catch(err) {
-            localStorage.setItem('isAuthenticated', 'false')
-            localStorage.setItem('error', 'something happened')
-            cb()
-            console.log(err)
-        }
+
+/*
+aunthenticate user 
+@@Params
+@user schema
+*/
+export const authenticateUser = async (user) => {
+    
+    //login user using functions
+    //setting localstorage to inform  user is authenticated
+    //set rest of info
+    try{
+        const loggedUser = await userLogin(user)
+        const userData = loggedUser.data
+
+        //set info in localstorage 
+        localStorage.setItem('userId', userData.id)
+        localStorage.setItem('username', userData.username)
+        localStorage.setItem('email',userData.email)
+        localStorage.setItem('isAuthenticated', 'true')
+        localStorage.setItem('error', 'false')
+        
+        return loggedUser
+    }catch(err) {
+        //return error
+        localStorage.setItem('isAuthenticated', 'false')
+        localStorage.setItem('error', 'something happened')
+        throw err
+    }
 
  
-   },
-   /*
-    sign out user 
-    @cd         callback functions ??
-    */
-   async signOut(){
-        try{
-            const resLogOut = await userLogOut()
-            console.log(resLogOut)
-            localStorage.clear()
-        }
-        catch(err){
-            console.log(err)
+   }
+/*
+sign out user 
+*/
+export const signOut = async () => {
+    try{
+        const resLogOut = await userLogOut()
+        return true            
+        localStorage.clear()
+    }
+    catch(err){
+        console.log(err)
+        throw err
+    }
+}
 
-        }
-   },
-
+export const isAuthenticated = () => {
+    return (localStorage.getItem('isAuthenticated') === 'true')? true : false
 }

@@ -1,36 +1,83 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
 
+const Auth = require('../../../utilities/authentication')
+
 class LoginForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            email: '',
-            password: '',
             error: '',
             cbResponce: '',
+            loading: false,
+            user: {
+                username: '',
+                password: '',
+            }
         }
-        console.log(this.props)
+        this.onChange = this.onChange.bind(this)
+        this.onLoginRequest = this.onLoginRequest.bind(this)
     }
 
-    onChange(){
+    //change info in input change
+    onChange(e){
+        e.preventDefault()
 
+        const userInfo = this.state.user
+        const field = e.target.name 
+        userInfo[field] = e.target.value
+
+        this.setState({user: userInfo})
     }
 
-    onLoginRequest(){
+    //handle login request
+    async onLoginRequest(e){
+        //show loading bar 
+        this.setState({loading: true})
+        e.preventDefault()
+        const userInfo = this.state.user
+        try{
+            const userResponce = await Auth.authenticateUser(userInfo)
+            //redirect to user page
 
-    }
-    render(){
+            this.setState((prev) => (
+                {
+                    cbResponce: !prev.cbResponce,
+                    loading: false,
+                }))
+        }
+        catch(err){
+            //no match found 
+            //incorrect email or password
+            this.setState(
+                {
+                    error: 'Incorrect password or username', 
+                    cbResponce: false,
+                    loading: false,
+                })
+        }
+    }   
+    render(){  
+
+        const {loading, error, cbResponce } = this.state
+
+        //handle error 
+        const errorMessage = (error)? <h2>{error}</h2> : <h2>Log In</h2>
+    
+        //handle the loading btn info
+        if(cbResponce) return (<Redirect to='/user' />)
+
         return(
-        <div>
+        <div>  
             <form>
+                {errorMessage}
             <div className="form-group">
-                <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email"></input>
+                <input name="username" type="text" className="form-control" onChange={this.onChange}  placeholder="username"></input>
             </div>
             <div className="form-group">
-                <input type="password" className="form-control" placeholder="Password"></input>
+                <input name="password" type="password" className="form-control" onChange={this.onChange}  placeholder="Password"></input>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary" onClick={this.onLoginRequest}>Submit</button>
             </form>
         </div>
         )
