@@ -1,5 +1,5 @@
 //import user functions 
-import { userLogin, userLogOut } from '../scenes/Sign/functions/login'
+import { userLogin, userLogOut } from '../scenes/Sign/functions/index'
 
 
 /*
@@ -48,6 +48,9 @@ export const signOut = async () => {
     }
 }
 
+/*
+check if user is authenticated
+*/
 export const isAuthenticated = () => {
     return (localStorage.getItem('isAuthenticated') === 'true')? true : false
 }

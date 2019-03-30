@@ -8,3 +8,7 @@ export const userLogin = (user) => {
 export const userLogOut = () => {
     return axios.post('/user/logout')
 }
+
+export const createUserAccount = (userAccountInfo) => {
+    return axios.post('/user/create', userAccountInfo)
+}
