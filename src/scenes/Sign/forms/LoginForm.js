@@ -15,12 +15,12 @@ class LoginForm extends Component {
                 password: '',
             }
         }
-        this.onChange = this.onChange.bind(this)
-        this.onLoginRequest = this.onLoginRequest.bind(this)
+        // this.onChange = this.onChange.bind(this)
+        // this.onLoginRequest = this.onLoginRequest.bind(this)
     }
 
     //change info in input change
-    onChange(e){
+    onChange = (e) => {
         e.preventDefault()
 
         const userInfo = this.state.user
@@ -31,7 +31,7 @@ class LoginForm extends Component {
     }
 
     //handle login request
-    async onLoginRequest(e){
+    onLoginRequest = async (e) => {
         //show loading bar 
         this.setState({loading: true})
         e.preventDefault()

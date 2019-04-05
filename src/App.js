@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
+//components
 import UserForm from './scenes/Sign/index'
 import NavBar from './scenes/Home/scenes/NavBar'
 import Home from './scenes/Home/scenes/Home'
+import CourseForm from './scenes/Forms/multi-course/CourseForm'
 import TEST from './scenes/Home/scenes/private'
 
 //private router
 import {PrivateRouter} from './utilities/privateRouter'
+
 
 class App extends Component {
   render() {
@@ -17,6 +20,7 @@ class App extends Component {
       <Switch>
         <Route exact path="/home" component={Home} />
         <Route exact path="/user/:page"  component={UserForm}/>
+        <PrivateRouter exact path="/course/submit/" component={CourseForm} />
         <PrivateRouter exact path="/test" component={TEST} />
       </Switch>
       </div>
