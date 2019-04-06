@@ -1,74 +1,52 @@
 import React, {Component} from 'react'
 
+//components
+import SingleCourseForm from './singleCourseForm';
 
+function getIndexArr(courses, index){
+    return courses[index]
+}
 class AddCourse extends Component {
     constructor(props){
         super(props)
 
-        console.log(props,'inside constructor')
         this.state = {
-            classCode: '',
-            className: '',
-            information: '',
-            section: '',
+            courseStp: 0,
+            courses: [],
         }
     }
 
-    onChange = (e) => {
-        e.preventDefault()
-        const field = e.target.name
-        this.setState({[field]: e.target.value})
+    nextCourseStp = () => {
+        this.setState( (prev) => ({
+            courseStp: prev.courseStp + 1
+        }))
     }
 
-    nextCourse = () => {
-        const cour = ['hiiiiiiiii']
-        this.props.addCourse(cour)
-        this.props.nextStp()
+    prevCourseStp = () => {
+        this.setState( (prev) => ({
+            courseStp: prev.courseStp - 1
+        }))
     }
+    addCourseToSet = (data) => {
+        const {courses} = this.state
+        const newCourses = courses.concat(data)
+        this.setState({courses: newCourses})
+    }
+
     render(){
-        console.log(this.props)
+        const {courseStp, courses} = this.state
+        let renderNewCourse = (courses.length > 0)? true : false
+        // let prevStatus = (courseStp === 0) 
+        let course = getIndexArr(courses, courseStp)
         return(
-            <div className="container text-center">
-                <h1>New Course</h1>
-
-                <label className="">Enter classCode: </label>
-                <input name="classCode" 
-                       className="form-control w-50"
-                       type="text"
-                       onChange={this.onChange}
-                       required
-                       ></input>
-                
-                <label className="">Enter className: </label>
-                <input name="className" 
-                       className="form-control w-50"
-                       type="text"
-                       onChange={this.onChange}
-                       required
-                       ></input>
-
-                <label className="">Enter section: </label>
-                <input name="section" 
-                       className="form-control w-50"
-                       type="text"
-                       onChange={this.onChange}
-                       required
-                       ></input>
-
-                <label className="">Enter informatio: </label>
-                <input name="information" 
-                       className="form-control w-50"
-                       type="text"
-                       onChange={this.onChange}
-                       required
-                       ></input>
-
-                <button type="submit" className="btn btn-primary" onClick={this.props.prevStp}>Prev</button>
-                <button type="submit" className="btn btn-primary" onClick={this.nextCourse}>Next</button>
-                <button type="submit" className="btn btn-primary">Done</button>
-
-
-            </div>
+            <SingleCourseForm 
+                renderNewCourse={renderNewCourse} 
+                numberCoureses={courses.length}
+                course={course}
+                addCourseToSet={this.addCourseToSet}
+                nextCourseStp={this.nextCourseStp} 
+                prevCourseStp={this.prevCourseStp}
+            />
         )
     }
 }

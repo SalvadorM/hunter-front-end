@@ -18,7 +18,7 @@ import React, {Component} from 'react'
 
 //course form
 import AddCourse from './addCourse'
-
+import WelcomeCourseForm from './welcomeCourse'
 
 class CourseForm extends Component {
     constructor(){
@@ -26,9 +26,8 @@ class CourseForm extends Component {
 
         this.state = {
             year: new Date().getFullYear(),
-            semester: '',
+            semesterInfo: '',
             courses: [],
-            courseStp: 0,
             step: 0,
         }
     }  
@@ -45,10 +44,15 @@ class CourseForm extends Component {
         }))
     }
 
+    addCourseDate = (semesterInfo) => {
+        this.setState({semesterInfo})
+    }
+
     addCourse = (courses) => {
         console.log(courses)
         this.setState({courses: courses})
     }
+    
     render(){
         console.log(this.state)
         const {step, courses} = this.state
@@ -60,9 +64,7 @@ class CourseForm extends Component {
                 )
             case 0:
                 return(
-                    <div>
-                        <h3>Welcome enter year and semester</h3>
-                        <button type="submit" className="btn btn-primary" onClick={this.nextStp}>Done</button>
+                    <div><WelcomeCourseForm addCourseDate={this.addCourseDate} nextStp={this.nextStp}/>
                     </div>
                 )
             case 1:
