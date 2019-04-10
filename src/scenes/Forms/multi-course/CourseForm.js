@@ -141,7 +141,8 @@ class CourseForm extends Component {
                             courseInfoLen={coursesInfo.length}
                             year={year}
                             season={semesterInfo}
-                            addNewCourseInfo={this.addNewCourseInfo}/>
+                            addNewCourseInfo={this.addNewCourseInfo}
+                        />
                     </div>
                 )
             case 2:
