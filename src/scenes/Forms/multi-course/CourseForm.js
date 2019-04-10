@@ -31,6 +31,8 @@ class CourseForm extends Component {
             coursesInfo: [],
             step: 0,
             courseStp: -1,
+            
+
         }
     } 
 
@@ -77,32 +79,7 @@ class CourseForm extends Component {
         const {step, courses, year, semesterInfo, coursesInfo, courseStp} = this.state
         let currentCourse
         console.log(courseStp)
-        // if(courseStp === -1 && coursesInfo[courseStp]){
-        //     console.log('inside 1')
-        //     currentCourse = {
-        //         classCode: '',
-        //         className: '',
-        //         information: '',
-        //         section: '',
-        //     }
-        // }else {
-        //     console.log('inside 2')
-        //     if(coursesInfo[courseStp + 1]){
-        //         console.log('inside 3')
-        //         currentCourse = coursesInfo[courseStp]
-        //     }else {
-        //         console.log('inside 4')
-
-        //         currentCourse = {
-        //             classCode: '',
-        //             className: '',
-        //             information: '',
-        //             section: '',
-        //         }
-        //     }
-
-        // }
-        currentCourse = coursesInfo[courseStp + 1]
+        currentCourse = coursesInfo[courseStp]
         if(!currentCourse){
             currentCourse = {
                         classCode: '',
