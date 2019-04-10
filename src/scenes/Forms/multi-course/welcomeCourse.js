@@ -21,7 +21,6 @@ class WelcomeCourseForm extends Component{
         this.props.nextStp()
     }
     render(){
-        console.log(this.state)
         const {semester} = this.state
         return(
             <div className="container text-center">

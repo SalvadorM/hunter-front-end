@@ -24,6 +24,8 @@ export const authenticateUser = async (user) => {
         localStorage.setItem('error', 'false')
         
         return loggedUser
+
+
     }catch(err) {
         //return error
         localStorage.setItem('isAuthenticated', 'false')
@@ -39,8 +41,11 @@ sign out user
 export const signOut = async () => {
     try{
         const resLogOut = await userLogOut()
-        return true            
-        localStorage.clear()
+        if(resLogOut.status === 200){
+            localStorage.clear()
+            return true 
+        }
+           
     }
     catch(err){
         console.log(err)

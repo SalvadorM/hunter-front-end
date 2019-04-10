@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
+import { userLogOut } from '../functions/index'
+
 
 const Auth = require('../../../utilities/authentication')
+
 
 class LoginForm extends Component {
     constructor(props){
@@ -15,8 +18,6 @@ class LoginForm extends Component {
                 password: '',
             }
         }
-        // this.onChange = this.onChange.bind(this)
-        // this.onLoginRequest = this.onLoginRequest.bind(this)
     }
 
     //change info in input change
@@ -39,12 +40,13 @@ class LoginForm extends Component {
         try{
             const userResponce = await Auth.authenticateUser(userInfo)
             //redirect to user page
-
-            this.setState((prev) => (
-                {
-                    cbResponce: !prev.cbResponce,
-                    loading: false,
-                }))
+            if(userResponce.status === 200){
+                this.setState((prev) => (
+                    {
+                        cbResponce: !prev.cbResponce,
+                        loading: false,
+                    }))
+            }
         }
         catch(err){
             //no match found 
@@ -56,14 +58,24 @@ class LoginForm extends Component {
                     loading: false,
                 })
         }
-    }   
+    } 
+    test = async (e) => {
+        e.preventDefault()
+        try{
+            const logOutResponce = await userLogOut()
+            console.log(logOutResponce)
+        }
+        catch(err){
+            console.log(err)
+        }
+    }  
     render(){  
 
         const {loading, error, cbResponce } = this.state
 
         //handle error 
         const errorMessage = (error)? <h2>{error}</h2> : <h2>Log In</h2>
-    
+        
         //handle the loading btn info
         if(cbResponce) return (<Redirect to='/user' />)
 
@@ -78,6 +90,11 @@ class LoginForm extends Component {
                 <input name="password" type="password" className="form-control" onChange={this.onChange}  placeholder="Password"></input>
             </div>
             <button type="submit" className="btn btn-primary" onClick={this.onLoginRequest}>Submit</button>
+            <br/>
+            <br/>
+
+            <button type="submit" className="btn btn-primary" onClick={this.test}>log out user</button>
+
             </form>
         </div>
         )

@@ -3,50 +3,46 @@ import React, {Component} from 'react'
 //components
 import SingleCourseForm from './singleCourseForm';
 
-function getIndexArr(courses, index){
-    return courses[index]
-}
+
 class AddCourse extends Component {
     constructor(props){
         super(props)
 
         this.state = {
-            courseStp: 0,
-            courses: [],
+            courses: this.props.courses,
+            error: '',
+            renderCleanNote: true,
         }
     }
 
-    nextCourseStp = () => {
-        this.setState( (prev) => ({
-            courseStp: prev.courseStp + 1
-        }))
+    addCourseToSet = (data) => {
+        this.props.addNewCourseInfo(data)
+        // this.props.nextStp()
+        this.setState({renderCleanNote: false})
+        this.props.nextStp()
     }
 
-    prevCourseStp = () => {
-        this.setState( (prev) => ({
-            courseStp: prev.courseStp - 1
-        }))
-    }
-    addCourseToSet = (data) => {
-        const {courses} = this.state
-        const newCourses = courses.concat(data)
-        this.setState({courses: newCourses})
+    changeBackToSemester = () => {
+        this.props.changeToSemester()
     }
 
     render(){
-        const {courseStp, courses} = this.state
-        let renderNewCourse = (courses.length > 0)? true : false
-        // let prevStatus = (courseStp === 0) 
-        let course = getIndexArr(courses, courseStp)
+        let currStp = this.props.courseStp
+        let changeSemester = (currStp === -1)? <button className="btn btn-primary" onClick={this.changeBackToSemester}>Change Semester</button> : <span></span>
+
         return(
+            <div>
+            {changeSemester}
+                
             <SingleCourseForm 
-                renderNewCourse={renderNewCourse} 
-                numberCoureses={courses.length}
-                course={course}
+                course={this.props.currentCourse}
+                courseStp={currStp}
+                courseInfoLen={this.props.courseInfoLen}
                 addCourseToSet={this.addCourseToSet}
-                nextCourseStp={this.nextCourseStp} 
-                prevCourseStp={this.prevCourseStp}
+                prevCourseStp={this.props.prevStp}
             />
+            </div>
+
         )
     }
 }
