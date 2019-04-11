@@ -1,4 +1,4 @@
-import axios from `../../../utilities/axios`
+import axios from '../../../utilities/axios'
 
 /*  
 @@PARAMS
@@ -14,7 +14,7 @@ import axios from `../../../utilities/axios`
 
 */
 export const addNewUserCourse = async (course) => {
-    
+    return axios.post('/class/add',course)
 }
 
 
@@ -27,5 +27,6 @@ export const addNewUserCourse = async (course) => {
     deletes a course in usercourse 
 */
 export const deleteUserCourse = async (courseId) => {
-
-}
+    const url = `/delete/${courseId}`
+    return axios.delete(url)
+}   

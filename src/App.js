@@ -22,6 +22,7 @@ class App extends Component {
         <Route exact path="/user/:page"  component={UserForm}/>
         <PrivateRouter exact path="/course/submit/" component={CourseForm} />
         <PrivateRouter exact path="/test" component={TEST} />
+        <Route path="/" component={Home} />
       </Switch>
       </div>
     );

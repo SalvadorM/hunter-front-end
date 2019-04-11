@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
-import { userLogOut } from '../functions/index'
-
 
 const Auth = require('../../../utilities/authentication')
 
@@ -59,15 +57,10 @@ class LoginForm extends Component {
                 })
         }
     } 
-    test = async (e) => {
+    userLogOut = async (e) => {
         e.preventDefault()
-        try{
-            const logOutResponce = await userLogOut()
-            console.log(logOutResponce)
-        }
-        catch(err){
-            console.log(err)
-        }
+        const responce = await Auth.signOut()
+        console.log(responce)
     }  
     render(){  
 
@@ -93,7 +86,7 @@ class LoginForm extends Component {
             <br/>
             <br/>
 
-            <button type="submit" className="btn btn-primary" onClick={this.test}>log out user</button>
+            <button type="submit" className="btn btn-primary" onClick={this.userLogOut}>log out user</button>
 
             </form>
         </div>

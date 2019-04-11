@@ -32,7 +32,8 @@ class WelcomeCourseForm extends Component{
                 <option value="summer">Summer</option>
                 <option value="winter">Winter</option>
             </select>
-
+            
+            <a className="btn btn-danger" href="/">Cancel</a>
             <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Next</button>
 
             </div>

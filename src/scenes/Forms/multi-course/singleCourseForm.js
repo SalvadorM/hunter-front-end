@@ -1,25 +1,23 @@
 import React, {Component} from 'react'
+//react router 
+import {Link} from 'react-router-dom'
+
 
 class SingleCourseForm extends Component {
     constructor(props){
         super(props)
-
         this.state = {
             classCode: '',
             className: '',
             information: '',
             section: '',
         }
-
-    
-
     }
-
-    handleNextCourse = () => {
-        // parse the info FIRST
+    addUserCourse = (e) => {
+        e.preventDefault()
         const {classCode, className, information, section} = this.state
         const data = {classCode,className,information, section}
-        this.props.addCourseToSet(data)
+        this.props.addNewUserCourse(data)
         this.setState({
                     classCode: '',
                     className: '',
@@ -33,18 +31,17 @@ class SingleCourseForm extends Component {
         const field = e.target.name
         this.setState({[field]: e.target.value})
     }
-
     render(){  
-        let {classCode, className, information, section} = this.state
-        let prevBtn = (this.props.courseStp === -1)?<span></span> : <button type="submit" className="btn btn-primary" onClick={this.props.prevCourseStp}>Prev</button> 
         
+        let {classCode, className, information, section} = this.state
+    
         return(
         <div className="container text-center">
             <h1>New Course</h1>
 
             <label className="">Enter classCode: </label>
             <input name="classCode"
-                   placeholder={classCode}
+                   value={classCode}
                    className="form-control w-50"
                    type="text"
                    onChange={this.onChange}
@@ -53,7 +50,7 @@ class SingleCourseForm extends Component {
             
             <label className="">Enter className: </label>
             <input name="className" 
-                   placeholder={className}
+                   value={className}
                    className="form-control w-50"
                    type="text"
                    onChange={this.onChange}
@@ -62,26 +59,27 @@ class SingleCourseForm extends Component {
 
             <label className="">Enter section: </label>
             <input name="section" 
-                   placeholder={section}
+                   value={section}
                    className="form-control w-50"
                    type="text"
                    onChange={this.onChange}
                    required
                    ></input>
 
-            <label className="">Enter informatio: </label>
+            <label className="">Enter information: </label>
             <input name="information" 
-                   placeholder={information}
+                   value={information}
                    className="form-control w-50"
                    type="text"
                    onChange={this.onChange}
                    required
                    ></input>
+                <br/>
+                <a className="btn btn-danger" href="/course/submit">Cancel</a>
+                <br/>
+                <br/>
 
-                {prevBtn}
-                <button type="submit" className="btn btn-primary" onClick={this.handleNextCourse}>Next Course</button>
-                <button type="submit" className="btn btn-primary">Done</button>
-
+                <button type="submit" className="btn btn-primary" onClick={this.addUserCourse}>Add Course</button>
 
             </div>
         )
