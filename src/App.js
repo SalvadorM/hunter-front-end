@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 //components
 import UserForm from './scenes/Sign/index'
 import NavBar from './scenes/Home/scenes/NavBar'
-import Home from './scenes/Home/scenes/Home'
+import Home from './scenes/Home/scenes/HomeLanding'
 import CourseForm from './scenes/Forms/multi-course/CourseForm'
 import TEST from './scenes/Home/scenes/private'
 
