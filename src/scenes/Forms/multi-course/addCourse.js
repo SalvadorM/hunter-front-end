@@ -22,25 +22,26 @@ class AddCourse extends Component {
              year: this.props.year,
              ...data
          }
-         this.props.addNewCourseInfo(courseToAdd)
+        //  this.props.addNewCourseInfo(courseToAdd)
 
-        //  try{
-        //     const newCourseResponce = await addNewUserCourse(courseToAdd)
-        //     if(newCourseResponce.status === 200){
-        //         const newCourseInfo = {
-        //             courseId: newCourseResponce.data.id,
-        //             className: newCourseResponce.data.className,
-        //             section: newCourseResponce.data.section,
+         try{
+            const newCourseResponce = await addNewUserCourse(courseToAdd)
+            console.log(newCourseResponce.data)
+            if(newCourseResponce.status === 200){
+                const newCourseInfo = {
+                    courseId: newCourseResponce.data.id,
+                    className: newCourseResponce.data.className,
+                    section: newCourseResponce.data.section,
 
-        //         }
-        //         this.props.addNewCourseInfo(newCourseInfo)
-        //     }
-        //     //some other error to handle  
-        //  }
-        //  catch(err){
-        //      console.log(err)
-        //      //send error to root 
-        //  }
+                }
+                this.props.addNewCourseInfo(newCourseInfo)
+            }
+            //some other error to handle  
+         }
+         catch(err){
+             console.log(err)
+             //send error to root 
+         }
     }
 
     changeBackToSemester = () => {
