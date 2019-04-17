@@ -62,7 +62,7 @@ class CourseScene extends Component {
                 <div className="card" key={i}>
                     <div className="card-body">
                     <h5 className="card-title">{val.username}</h5>
-                    <p className="card-text">Section: {val.name}</p>
+                    <p className="card-text">name: {val.name}</p>
                     <Link to="#" className="btn btn-primary"/>
                     </div>
                 </div>)
