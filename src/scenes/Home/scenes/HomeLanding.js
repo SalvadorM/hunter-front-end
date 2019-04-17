@@ -68,8 +68,7 @@ class Home extends Component {
                     </select>
                     </div>
                     <h1>Hello {username}</h1>
-                    <h2>Render Current Classes</h2>
-                    <UserCourses courses={classes} />
+                    <UserCourses courses={classes} season={season} year={year}/>
                     <h3>find friends </h3>
                     <h2>Render Post created by user</h2>
                     <h2>Render Friends</h2>
