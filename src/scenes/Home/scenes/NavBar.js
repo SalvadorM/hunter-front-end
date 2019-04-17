@@ -12,10 +12,9 @@ class NavBar extends Component {
             menuToggle: false
         }
 
-        this.handleMenuToggle = this.handleMenuToggle.bind(this)
     }
 
-    handleMenuToggle(){
+    handleMenuToggle = () => {
         this.setState((prev) => ({
             menuToggle: !prev.menuToggle
         }))

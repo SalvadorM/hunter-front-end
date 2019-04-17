@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 
 //components
-import SingleCourseForm from './singleCourseForm';
+import SingleCourseForm from './singleCourseForm'
 
+import {addNewUserCourse} from '../functions/createCourse'
 
 class AddCourse extends Component {
     constructor(props){
@@ -11,36 +12,57 @@ class AddCourse extends Component {
         this.state = {
             courses: this.props.courses,
             error: '',
-            renderCleanNote: true,
         }
     }
 
-    addCourseToSet = (data) => {
-        this.props.addNewCourseInfo(data)
-        // this.props.nextStp()
-        this.setState({renderCleanNote: false})
-        this.props.nextStp()
+    addNewUserCourse = async (data) => {
+         //add courseId to CourseForm 
+         let courseToAdd = {
+            season: this.props.semester,
+             year: this.props.year,
+             ...data
+         }
+         this.props.addNewCourseInfo(courseToAdd)
+
+        //  try{
+        //     const newCourseResponce = await addNewUserCourse(courseToAdd)
+        //     if(newCourseResponce.status === 200){
+        //         const newCourseInfo = {
+        //             courseId: newCourseResponce.data.id,
+        //             className: newCourseResponce.data.className,
+        //             section: newCourseResponce.data.section,
+
+        //         }
+        //         this.props.addNewCourseInfo(newCourseInfo)
+        //     }
+        //     //some other error to handle  
+        //  }
+        //  catch(err){
+        //      console.log(err)
+        //      //send error to root 
+        //  }
     }
 
     changeBackToSemester = () => {
         this.props.changeToSemester()
     }
-
+    
     render(){
         let currStp = this.props.courseStp
-        let changeSemester = (currStp === -1)? <button className="btn btn-primary" onClick={this.changeBackToSemester}>Change Semester</button> : <span></span>
 
         return(
+            <div> 
             <div>
-            {changeSemester}
-                
+            <button className="btn btn-primary text-center" onClick={this.changeBackToSemester}>Change Semester</button>
+            </div>               
             <SingleCourseForm 
                 course={this.props.currentCourse}
                 courseStp={currStp}
                 courseInfoLen={this.props.courseInfoLen}
-                addCourseToSet={this.addCourseToSet}
-                prevCourseStp={this.props.prevStp}
+                addNewUserCourse={this.addNewUserCourse}
             />
+            <button className="btn btn-primary text-center" onClick={this.props.nextStp}>Done</button>
+
             </div>
 
         )

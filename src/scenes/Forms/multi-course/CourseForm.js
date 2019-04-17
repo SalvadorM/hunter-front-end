@@ -19,6 +19,7 @@ import React, {Component} from 'react'
 //course form
 import AddCourse from './addCourse'
 import WelcomeCourseForm from './welcomeCourse'
+import FinalCourseForm from './FinalCourseForm';
 
 class CourseForm extends Component {
     constructor(){
@@ -27,25 +28,10 @@ class CourseForm extends Component {
         this.state = {
             year: new Date().getFullYear(),
             semesterInfo: '',
-            courses: [],
             coursesInfo: [],
             step: 0,
-            courseStp: -1,
         }
     } 
-
-    prevCourseStp = () => {
-        this.setState( (prev) => ({
-            courseStp: prev.courseStp - 1
-        }))
-    }
-
-    nextCourseStp = () => {
-        // console.log('next course')
-        this.setState( (prev) => ({
-            courseStp: prev.courseStp + 1
-        }))
-    }
 
     prevStp = () => {
         this.setState( (prev) => ({
@@ -61,6 +47,7 @@ class CourseForm extends Component {
 
     addCourseDate = (semesterInfo) => {
         this.setState({semesterInfo})
+
     }
 
     addNewCourseInfo = (newCourseInfo) => {
@@ -74,46 +61,7 @@ class CourseForm extends Component {
     }
     
     render(){
-        const {step, courses, year, semesterInfo, coursesInfo, courseStp} = this.state
-        let currentCourse
-        console.log(courseStp)
-        // if(courseStp === -1 && coursesInfo[courseStp]){
-        //     console.log('inside 1')
-        //     currentCourse = {
-        //         classCode: '',
-        //         className: '',
-        //         information: '',
-        //         section: '',
-        //     }
-        // }else {
-        //     console.log('inside 2')
-        //     if(coursesInfo[courseStp + 1]){
-        //         console.log('inside 3')
-        //         currentCourse = coursesInfo[courseStp]
-        //     }else {
-        //         console.log('inside 4')
-
-        //         currentCourse = {
-        //             classCode: '',
-        //             className: '',
-        //             information: '',
-        //             section: '',
-        //         }
-        //     }
-
-        // }
-        currentCourse = coursesInfo[courseStp + 1]
-        if(!currentCourse){
-            currentCourse = {
-                        classCode: '',
-                        className: '',
-                        information: '',
-                        section: '',
-                    }
-        }
-        console.log(coursesInfo)
-        console.log(currentCourse)
-      
+        const { year, semesterInfo, step, coursesInfo} = this.state
         switch(step){
             case -1:
                 return(
@@ -122,9 +70,9 @@ class CourseForm extends Component {
             case 0:
                 return(
                     <div><WelcomeCourseForm 
-                        addCourseDate={this.addCourseDate} 
                         nextStp={this.nextStp}
-                        nextCourseStp={this.nextCourseStp}/>
+                        addCourseDate={this.addCourseDate}
+                        />
                     </div>
                 )
             case 1:
@@ -132,24 +80,19 @@ class CourseForm extends Component {
                     <div className="container">
                         <h1 className="display-4">Add Courses</h1>
                         <AddCourse 
-                            changeToSemester={this.prevStp}
-                            prevStp={this.prevCourseStp} 
-                            nextStp={this.nextCourseStp} 
-                            courses={courses} 
-                            currentCourse={currentCourse}
-                            courseStp={courseStp}
-                            courseInfoLen={coursesInfo.length}
+                            semester={semesterInfo}
                             year={year}
-                            season={semesterInfo}
-                            addNewCourseInfo={this.addNewCourseInfo}/>
+                            addNewCourseInfo={this.addNewCourseInfo}
+                            nextStp={this.nextStp}/>
                     </div>
                 )
             case 2:
             return(
-                <div>
-                    <h3>Confirm classes</h3>
-                    <button type="submit" className="btn btn-primary">Done</button>
-                </div>
+                <FinalCourseForm 
+                    coursesInfo={coursesInfo}
+                    semester={semesterInfo}
+                    year={year}
+                />
             )
         }
     }
