@@ -21,7 +21,10 @@ class UserCourses extends Component {
                             pathname: path,
                             state: {
                                 season: season,
-                                year: year}
+                                year: year,
+                                courseId: val.id,
+                                section: val.section
+                            }       
                           }}
                           className="btn btn-primary"/>
                     </div>

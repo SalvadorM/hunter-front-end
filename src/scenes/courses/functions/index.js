@@ -6,7 +6,7 @@ export const getCourseInformation = async (classcode) => {
     return axios.get(api_url)
 }
 
-export const getCourseStudents = async (classcode, season, year) => {
-    let api_url = `/usercourse/classmates?year=${year}&season=${season}&classcode=${classcode}`
+export const getCourseStudents = async (classcode, season, year, section) => {
+    let api_url = `/usercourse/classmates?year=${year}&season=${season}&classcode=${classcode}&section=${section}`
     return axios.get(api_url)
 }

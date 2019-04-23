@@ -4,6 +4,6 @@ const websiteURL = `https://hunter-app-api.herokuapp.com/`
 const devURL = `http://localhost:8000`
 
 export default axios.create({
-    baseURL: websiteURL,
+    baseURL: devURL,
     withCredentials: true,
   })

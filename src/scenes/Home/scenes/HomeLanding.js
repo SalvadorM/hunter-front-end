@@ -13,7 +13,7 @@ class Home extends Component {
             username: localStorage.getItem('username'),
             classes: [],
             cbResponce: false,
-            season: 'fall',
+            season: 'spring',
             year: new Date().getFullYear()
 
         }
@@ -23,11 +23,11 @@ class Home extends Component {
         const {season, year} = this.state
         this.getUserCourse(season, year)
     }
+    
     getUserCourse = async (season, year) => {
         try{
             const classes = await getCurrentClasses(season, year)
             //add the rest
-            console.log(classes.data)
             this.setState({classes: classes.data})
         }
         catch(err){
