@@ -70,7 +70,7 @@ class LoginForm extends Component {
         const errorMessage = (error)? <h2>{error}</h2> : <h2>Log In</h2>
         
         //handle the loading btn info
-        if(cbResponce) return (<Redirect to='/user' />)
+        if(cbResponce) return (<Redirect to='/home' />)
 
         return(
         <div>  
