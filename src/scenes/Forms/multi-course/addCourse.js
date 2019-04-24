@@ -22,11 +22,8 @@ class AddCourse extends Component {
              year: this.props.year,
              ...data
          }
-        //  this.props.addNewCourseInfo(courseToAdd)
-
          try{
             const newCourseResponce = await addNewUserCourse(courseToAdd)
-            console.log(newCourseResponce.data)
             if(newCourseResponce.status === 200){
                 const newCourseInfo = {
                     courseId: newCourseResponce.data.id,

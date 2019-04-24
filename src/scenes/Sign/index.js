@@ -17,10 +17,7 @@ class UserForm extends Component {
         this.handleRegisterRequest = this.handleRegisterRequest.bind(this)
 
     }
-
-    async componentDidMount(){
-    }
-
+    
     async handleRegisterRequest(){
 
     }
