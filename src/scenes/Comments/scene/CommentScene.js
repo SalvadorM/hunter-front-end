@@ -55,7 +55,7 @@ class CommentScene extends Component {
         return(
             <div className="comment-container">
                 <PostCommetForm postId={postId} updateComments={this.getPostComments}/>
-                <CommentList comments={comments} />
+                <CommentList comments={comments} userview={false}/>
             </div>
         )
     }

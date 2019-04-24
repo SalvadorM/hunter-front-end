@@ -9,3 +9,8 @@ export const postComment = async (comment) => {
     let url = `/comment/new`
     return axios.post(url, comment)
 }
+
+export const getUserCommentsByUserId = async (userId) => {
+    let url = `/comment/usercomments/${userId}`
+    return axios.get(url)
+}

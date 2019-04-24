@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
 //components
-import PostView from '../components/postView'
+import PostCardView from '../components/postCardView'
 
 //functions
 import { getClassPosts } from '../functions/index'
@@ -25,7 +25,6 @@ class CoursePosts extends Component {
             let postRes = await getClassPosts(classCode)
 
             if(postRes.status === 200){
-                console.log(postRes.data)
                 this.setState({
                     posts: postRes.data
                 })
@@ -48,13 +47,15 @@ class CoursePosts extends Component {
     render(){
         let { posts } = this.state
         let RenderPosts = posts.map( (val, i) => {
-            return (<PostView post={val} key={i}/>)
+            return (<PostCardView post={val} key={i}/>)
         })
 
         return(
             <div className="all-post-container">
-                {this.props.classCode}
+                <div className="row">
                 {RenderPosts}
+                </div>
+               
             </div>
         )
     }

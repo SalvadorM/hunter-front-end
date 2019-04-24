@@ -16,3 +16,8 @@ export const getPostById = async (postId) => {
     let url = `/post/${postId}`
     return axios.get(url)
 }
+
+export const getUserPostByUserId = async (userId) => {
+    let url = `/post/userposts/${userId}`
+    return axios.get(url)
+}

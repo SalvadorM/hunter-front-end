@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {getCourseInformation, getCourseStudents} from '../functions/index'
 import UserInfoDisplay from '../components/userInfo'
 import SectionSelectionComponent from '../components/sectionSelection'
-import CoursePosts from '../../post/scene/CoursePosts';
+import CoursePosts from '../../Post/scene/CoursePosts';
 
 
 //make one function to set state
@@ -132,7 +132,7 @@ class CourseScene extends Component {
                 <h3>Students</h3>
                 {renderStudents}
             </div>
-            <div className="posts-container">
+            <div className="posts-container container">
                 <Link to={{ pathname: `/post/${classCode}`, state: { className } }} className="btn btn-info">Create Post</Link>
                 
                 <h3>posts</h3>

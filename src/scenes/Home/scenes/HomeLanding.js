@@ -3,7 +3,11 @@ import React, {Component} from 'react'
 
 //functions 
 import {getCurrentClasses} from '../functions/index'
-import UserCourses from '../../courses/scenes/UserCourses';
+import UserCourses from '../../Courses/scene/UserCourses';
+import ViewUserFriends from '../../Friendship/scene/ViewUserFriends';
+import ViewUserComments from '../../Comments/scene/ViewUserComments'
+import ViewUserPosts from '../../Post/scene/ViewUserPosts'
+import ViewFriendRequests from '../../Friendship/scene/ViewFriendRequests';
 
 class Home extends Component {
     constructor(props){
@@ -23,7 +27,12 @@ class Home extends Component {
         const {season, year} = this.state
         this.getUserCourse(season, year)
     }
-    
+
+    refreshHome = async () => {
+        let { season, year } = this.state
+        this.getUserCourse(season, year)
+    }
+
     getUserCourse = async (season, year) => {
         try{
             const classes = await getCurrentClasses(season, year)
@@ -49,7 +58,9 @@ class Home extends Component {
     }   
 
     render(){
+        console.log('etet')
         const { username, season, year, classes} = this.state
+        let currentUser = localStorage.getItem('userId')
         return(
             <div className="container">
                 <div className="jumbotron">
@@ -70,9 +81,10 @@ class Home extends Component {
                     <h1>Hello {username}</h1>
                     <UserCourses courses={classes} season={season} year={year}/>
                     <h3>find friends </h3>
-                    <h2>Render Post created by user</h2>
-                    <h2>Render Friends</h2>
-                    <h2>Render Comments</h2>
+                    <ViewUserFriends currentUser={currentUser} profileView={false}/>
+                    <ViewFriendRequests refreshHome={this.refreshHome}/>
+                    <ViewUserComments currentUser={currentUser} />
+                    <ViewUserPosts currentUser={currentUser} />
                 </div>
             </div>
         )

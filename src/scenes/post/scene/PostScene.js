@@ -5,7 +5,7 @@ import {getPostById} from '../functions/index'
 
 //router
 import { Link } from 'react-router-dom'
-import CommentScene from '../../Comments/scenes/CommentScene';
+import CommentScene from '../../Comments/scene/CommentScene';
 class PostScene extends Component {
     constructor(props){
         super(props)
