@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { getUserFriendlist, getOtherUserFriendlist } from '../functions/index'
 
 //components
-import UserInfoDisplay from '../../Courses/components/userInfo'
+import UserInfoDisplay from '../../courses/components/userInfo'
 
 class ViewUserFriends extends Component {
     constructor(props){

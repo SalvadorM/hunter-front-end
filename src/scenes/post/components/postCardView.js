@@ -13,8 +13,7 @@ const PostCardView = (props) => {
                 <p><Link to={`/user/${postOwnerId}`}>Posted by: {usernameOwner}</Link></p>
                 <Link to={`/post/view/${id}`} className="btn btn-outline-info">view post</Link>
             </div>
-     
-
+    
         </div>
     )
 }
