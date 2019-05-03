@@ -3,10 +3,10 @@ import React, {Component} from 'react'
 
 //functions 
 import {getCurrentClasses} from '../functions/index'
-import UserCourses from '../../Courses/scene/UserCourses';
+import UserCourses from '../../courses/scene/UserCourses';
 import ViewUserFriends from '../../Friendship/scene/ViewUserFriends';
 import ViewUserComments from '../../Comments/scene/ViewUserComments'
-import ViewUserPosts from '../../Post/scene/ViewUserPosts'
+import ViewUserPosts from '../../post/scene/ViewUserPosts'
 import ViewFriendRequests from '../../Friendship/scene/ViewFriendRequests';
 
 class Home extends Component {
@@ -25,11 +25,6 @@ class Home extends Component {
 
     async componentDidMount(){
         const {season, year} = this.state
-        this.getUserCourse(season, year)
-    }
-
-    refreshHome = async () => {
-        let { season, year } = this.state
         this.getUserCourse(season, year)
     }
 
@@ -82,7 +77,7 @@ class Home extends Component {
                     <UserCourses courses={classes} season={season} year={year}/>
                     <h3>find friends </h3>
                     <ViewUserFriends currentUser={currentUser} profileView={false}/>
-                    <ViewFriendRequests refreshHome={this.refreshHome}/>
+                    <ViewFriendRequests />
                     <ViewUserComments currentUser={currentUser} />
                     <ViewUserPosts currentUser={currentUser} />
                 </div>

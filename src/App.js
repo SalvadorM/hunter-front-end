@@ -6,9 +6,9 @@ import UserForm from './scenes/Sign/index'
 import NavBar from './scenes/Home/scenes/NavBar'
 import Home from './scenes/Home/scenes/HomeLanding'
 import CourseForm from './scenes/Forms/multi-course/CourseForm'
-import CourseScene from './scenes/Courses/scene/CourseScene'
-import CreatePost from './scenes/Post/scene/CreatePost'
-import PostScene from './scenes/Post/scene/PostScene'
+import CourseScene from './scenes/courses/scene/CourseScene'
+import CreatePost from './scenes/post/scene/CreatePost'
+import PostScene from './scenes/post/scene/PostScene'
 import ViewUserProfle from './scenes/User/Scene/ViewUserProfile'
 
 //private router

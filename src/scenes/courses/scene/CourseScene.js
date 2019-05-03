@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {getCourseInformation, getCourseStudents} from '../functions/index'
 import UserInfoDisplay from '../components/userInfo'
 import SectionSelectionComponent from '../components/sectionSelection'
-import CoursePosts from '../../Post/scene/CoursePosts';
+import CoursePosts from '../../post/scene/CoursePosts';
 
 
 //make one function to set state

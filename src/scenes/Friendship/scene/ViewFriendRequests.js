@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+//react router
+import { Redirect } from 'react-router-dom'
+
 //functions 
 import {getUserFriendRequestList, acceptFriendRequest} from '../functions/index'
 import RequestUserView from '../components/RequestUserView';
@@ -12,6 +15,8 @@ class ViewFriendRequests extends Component {
             friendRequestList: [],
             error: false,
             errorMessage: 'There was an error getting information from database, try again',
+            cbResponce: false,
+            acceptedUserId: '',
         }
     }
 
@@ -29,6 +34,7 @@ class ViewFriendRequests extends Component {
                 }
                 return user
             })
+            console.log(friendReqRes)
             if(friendReqRes.status === 200){
                 this.setState({
                     friendRequestList
@@ -51,13 +57,17 @@ class ViewFriendRequests extends Component {
         try{
             let acceptRes = await acceptFriendRequest(acceptedUserId)
             if(acceptRes.status === 200){
-                this.props.refreshHome()
+                this.setState({
+                    cbResponce: true,
+                    acceptedUserId,
+                })
             }else{
                 this.setState({
                     error: true, 
                     errorMessage: 'There was an error getting information from database, try again'
                 })
             }
+            console.log(`chaning url to ${acceptedUserId}`)
         }   
         catch(err){
             console.log(err)
@@ -69,12 +79,13 @@ class ViewFriendRequests extends Component {
     }
 
     render(){
-        let {friendRequestList} = this.state
+        let {friendRequestList, cbResponce, acceptedUserId} = this.state
+
         let requestList
         if(friendRequestList.length === 0){
-            requestList = ( <li className="list-group-item d-flex justify-content-between align-items-center">
-            empty
-          </li> )
+            requestList = ( <li className="list-group-item d-flex justify-content-between align-items-center">empty</li> )
+        } else if( cbResponce ){
+            return(<Redirect to={`/profile/${acceptedUserId}`} />)
         }else {
             requestList = friendRequestList.map( (val, i) => {
                 return(<RequestUserView user={val} key={i} acceptFriendRequest={this.acceptFriendRequest}/>)
@@ -82,8 +93,8 @@ class ViewFriendRequests extends Component {
         }
         return(
             <div className="FR-container text-center">
-            <h1>Show request list</h1>
-                <div className="container">
+            <h3>Show request list</h3>
+                <div className="">
                     <ul className="list-group">
                     {requestList}
                     </ul>

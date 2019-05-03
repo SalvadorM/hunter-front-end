@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { getUserFriendlist, getOtherUserFriendlist } from '../functions/index'
 
 //components
-import UserInfoDisplay from '../../Courses/components/userInfo'
+import UserInfoDisplay from '../../courses/components/userInfo'
 
 class ViewUserFriends extends Component {
     constructor(props){
@@ -79,8 +79,7 @@ class ViewUserFriends extends Component {
 
         return(
             <div className="friendlist-container text-center">
-                <h2>Friends</h2>
-
+                <h4>Friends</h4>
                 {friendList}
             </div>
         )

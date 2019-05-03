@@ -52,8 +52,8 @@ class ViewUserComments extends Component {
        let commentList
        if(comments.length === 0){
         commentList = (
-               <div className="text-center">
-                   <h4>You have not commented on posts yet</h4>
+               <div className="">
+                   <h5>No comments</h5>
                </div>
            )
        }else {
@@ -70,9 +70,8 @@ class ViewUserComments extends Component {
             
        }        
         return(
-            <div className="container user-comments-container text-center">
-                <h2>render user comments</h2>
-                <div className="row">
+            <div className="container user-comments-container">
+                <div className="row text-center">
                 {commentList}
                 </div>
             </div>

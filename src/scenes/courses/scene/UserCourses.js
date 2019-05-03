@@ -44,7 +44,7 @@ class UserCourses extends Component {
         }
         return(
             <div> 
-                <h3>Here are your current classes</h3>
+                <h4>Current classes</h4>
                 {CoursesToRender}
             </div>
         )

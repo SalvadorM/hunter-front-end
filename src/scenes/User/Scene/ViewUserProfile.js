@@ -10,7 +10,7 @@ import { getProfileInfo } from '../functions/index.js'
 //components
 import ViewUserFriends from '../../Friendship/scene/ViewUserFriends';
 import ViewUserComments from '../../Comments/scene/ViewUserComments'
-import ViewUserPosts from '../../Post/scene/ViewUserPosts'
+import ViewUserPosts from '../../post/scene/ViewUserPosts'
 import PrivateFriendComponent from '../../Friendship/components/PrivateFriendComponent'
 
 class ViewUserProfle extends Component {

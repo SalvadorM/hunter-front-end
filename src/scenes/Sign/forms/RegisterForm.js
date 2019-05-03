@@ -16,7 +16,7 @@ class RegisterForm extends Component {
                 password2: '',
             },
             cbResponce: false,
-            error: '',
+            errorMessage: '',
             passwordsMatch: false,
         }
 
@@ -48,9 +48,17 @@ class RegisterForm extends Component {
             }
             try{
                 const accountResponce = await createUserAccount(accountInfo)
-                if(accountResponce.status === 200){
+                let resData = accountResponce.data
+                if(accountResponce.status === 200 && !resData.error){
+                    console.log(`account is unique`)
                     this.setState({
                         cbResponce: true,
+                        error: false
+                    })
+                }else {
+                    this.setState({
+                        error: true,
+                        errorMessage: resData.errorMessage
                     })
                 }
             }
@@ -73,7 +81,7 @@ class RegisterForm extends Component {
         const field = e.target.name
         userInfo[field] = e.target.value
 
-        this.setState({userInfo},() => {
+        this.setState({userInfo, error: false},() => {
             if(field === 'password2'){
                 this.passwordsMatch()
             }
@@ -81,9 +89,9 @@ class RegisterForm extends Component {
     }
 
     render(){
-        const {cbResponce, error} = this.state
+        const {cbResponce, error, errorMessage} = this.state
 
-        const errorMessage = (error)? <h2>{error}</h2> :<h2>Register Account</h2> 
+        let errorMessageView = (error)? <h2>{errorMessage}</h2> :<h2>Register Account</h2> 
 
         if(cbResponce){
             return(<Redirect to="/user/login" />)
@@ -92,7 +100,7 @@ class RegisterForm extends Component {
             return(
                 <div>
                     <form>
-                        {errorMessage}
+                        {errorMessageView}
                     <div className="form-group">
                         <input type="text" name="name" className="form-control" onChange={this.onChange} placeholder="Name"></input>
                     </div>
@@ -108,11 +116,11 @@ class RegisterForm extends Component {
         
         
                     <div className="form-group">
-                        <input type="text" name="password" className="form-control" onChange={this.onChange} placeholder="password"></input>
+                        <input type="password" name="password" className="form-control" onChange={this.onChange} placeholder="password"></input>
                     </div>
         
                     <div className="form-group">
-                        <input type="text" name="password2" className="form-control" onChange={this.onChange} placeholder="repeat password"></input>
+                        <input type="password" name="password2" className="form-control" onChange={this.onChange} placeholder="repeat password"></input>
                     </div>
         
         
