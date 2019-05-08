@@ -61,7 +61,7 @@ class ViewUserPosts extends Component {
        }else {
             postList = posts.map((val,i) => { 
                 return(
-                <div className="post-card col-6 card" key={i}>
+                <div className="post-card col-5 card" key={i}>
                     <div className="card-body">
                         <h5 className="card-title">{val.title}</h5>
                         <Link to={`/post/view/${val.id}`} className="btn btn-outline-info">view post</Link>
@@ -71,7 +71,8 @@ class ViewUserPosts extends Component {
             })      
         }
         return(
-        <div className="user-comments-container">
+        <div className="user-comments-container container text-center">
+        <h4>Posts</h4>
             <div className="row"> 
             {postList}
             </div>

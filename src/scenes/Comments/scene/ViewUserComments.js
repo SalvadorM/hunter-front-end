@@ -59,7 +59,7 @@ class ViewUserComments extends Component {
        }else {
         commentList = comments.map((val,i) => { 
             return(
-                <div className="post-card col-6 card" key={i}>
+                <div className="post-card col-5 card" key={i}>
                 <div className="card-body">
                     <h5 className="card-title text-truncate">{val.body}</h5>
                     <Link to={`/post/view/${val.postId}`} className="btn btn-outline-info">view comment</Link>
@@ -70,8 +70,9 @@ class ViewUserComments extends Component {
             
        }        
         return(
-            <div className="container user-comments-container">
-                <div className="row text-center">
+            <div className="container user-comments-container text-center">
+                <h4>Comments</h4>
+                <div className="row">
                 {commentList}
                 </div>
             </div>

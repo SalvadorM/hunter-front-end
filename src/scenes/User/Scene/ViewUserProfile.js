@@ -80,8 +80,8 @@ class ViewUserProfle extends Component {
             PrivateSection = (
                 <div>
                 <ViewUserFriends currentUser={userProfileId} profileView={true}/>
-                <ViewUserComments currentUser={userProfileId} />
                 <ViewUserPosts currentUser={userProfileId} />
+                <ViewUserComments currentUser={userProfileId} />
                 </div>
             )
         }

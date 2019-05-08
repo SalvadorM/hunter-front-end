@@ -78,8 +78,8 @@ class Home extends Component {
                     <h3>find friends </h3>
                     <ViewUserFriends currentUser={currentUser} profileView={false}/>
                     <ViewFriendRequests />
-                    <ViewUserComments currentUser={currentUser} />
                     <ViewUserPosts currentUser={currentUser} />
+                    <ViewUserComments currentUser={currentUser} />
                 </div>
             </div>
         )
