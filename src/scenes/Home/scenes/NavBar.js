@@ -32,7 +32,7 @@ class NavBar extends Component {
         return(
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container">
-                    <a className="navbar-brand" href="#">ClassHub</a>
+                    <a className="navbar-brand" href="/home">ClassHub</a>
                     <div className={navBarStyle}>
                             <div className="nav-item" onClick={this.handleMenuToggle}><NavLink to="/home" activeClassName="active" className="nav-link">Home</NavLink></div>
                             <div className="nav-item" onClick={this.handleMenuToggle}><NavLink to="/user/login" activeClassName="active" className="nav-link">Sign In</NavLink></div>

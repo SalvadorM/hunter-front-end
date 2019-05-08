@@ -52,14 +52,14 @@ class ViewUserComments extends Component {
        let commentList
        if(comments.length === 0){
         commentList = (
-               <div className="text-center">
-                   <h4>You have not commented on posts yet</h4>
+               <div className="">
+                   <h5>No comments</h5>
                </div>
            )
        }else {
         commentList = comments.map((val,i) => { 
             return(
-                <div className="post-card col-6 card" key={i}>
+                <div className="post-card col-5 card" key={i}>
                 <div className="card-body">
                     <h5 className="card-title text-truncate">{val.body}</h5>
                     <Link to={`/post/view/${val.postId}`} className="btn btn-outline-info">view comment</Link>
@@ -71,7 +71,7 @@ class ViewUserComments extends Component {
        }        
         return(
             <div className="container user-comments-container text-center">
-                <h2>render user comments</h2>
+                <h4>Comments</h4>
                 <div className="row">
                 {commentList}
                 </div>

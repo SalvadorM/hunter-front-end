@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import './stylesheets/index.css'
 
 //components
 import UserForm from './scenes/Sign/index'

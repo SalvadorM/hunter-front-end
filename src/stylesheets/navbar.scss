@@ -2,12 +2,15 @@ $break-mobile: 420px;
 $break-desktop: 776px;
 
 .navbar-nav {
-    background-color: red;
+    background-color: #7D7C7C;
     display: none;
 }
 
 .nav-item {
     display: inline-block;
+    padding-right: 10px;
+    padding-left: 10px;
+    border:solid black 2px;
 }
 
 .toggleMenu {
@@ -22,4 +25,4 @@ $break-desktop: 776px;
     .nav-toggler{
         display: none;
     }
-}   
+}

@@ -79,8 +79,7 @@ class ViewUserFriends extends Component {
 
         return(
             <div className="friendlist-container text-center">
-                <h2>Friends</h2>
-
+                <h4>Friends</h4>
                 {friendList}
             </div>
         )

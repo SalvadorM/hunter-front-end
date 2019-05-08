@@ -28,11 +28,6 @@ class Home extends Component {
         this.getUserCourse(season, year)
     }
 
-    refreshHome = async () => {
-        let { season, year } = this.state
-        this.getUserCourse(season, year)
-    }
-
     getUserCourse = async (season, year) => {
         try{
             const classes = await getCurrentClasses(season, year)
@@ -82,9 +77,9 @@ class Home extends Component {
                     <UserCourses courses={classes} season={season} year={year}/>
                     <h3>find friends </h3>
                     <ViewUserFriends currentUser={currentUser} profileView={false}/>
-                    <ViewFriendRequests refreshHome={this.refreshHome}/>
-                    <ViewUserComments currentUser={currentUser} />
+                    <ViewFriendRequests />
                     <ViewUserPosts currentUser={currentUser} />
+                    <ViewUserComments currentUser={currentUser} />
                 </div>
             </div>
         )

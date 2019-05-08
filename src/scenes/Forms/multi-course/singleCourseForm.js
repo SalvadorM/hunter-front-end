@@ -42,7 +42,7 @@ class SingleCourseForm extends Component {
             <label className="">Enter classCode: </label>
             <input name="classCode"
                    value={classCode}
-                   className="form-control w-50"
+                   className="form-control w-100"
                    type="text"
                    onChange={this.onChange}
                    required
@@ -51,7 +51,7 @@ class SingleCourseForm extends Component {
             <label className="">Enter className: </label>
             <input name="className" 
                    value={className}
-                   className="form-control w-50"
+                   className="form-control w-100"
                    type="text"
                    onChange={this.onChange}
                    required
@@ -60,7 +60,7 @@ class SingleCourseForm extends Component {
             <label className="">Enter section: </label>
             <input name="section" 
                    value={section}
-                   className="form-control w-50"
+                   className="form-control w-100"
                    type="text"
                    onChange={this.onChange}
                    required
@@ -69,7 +69,7 @@ class SingleCourseForm extends Component {
             <label className="">Enter information: </label>
             <input name="information" 
                    value={information}
-                   className="form-control w-50"
+                   className="form-control w-100"
                    type="text"
                    onChange={this.onChange}
                    required
