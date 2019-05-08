@@ -1,0 +1,65 @@
+/* <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> */
+
+
+body, html {
+  font-family: 'Roboto', sans-serif;
+  background-color: #FAFFFF;
+}
+
+.jumbotron {
+  background-color: #FAFFFF;
+  font-family: 'Roboto', sans-serif;
+}
+
+.card{
+  border-radius: 10px;
+  margin-top:2.5px;
+  margin-left:10px;
+  margin-right: 10px;
+  margin-bottom: 2.5px;
+  padding:0px;
+  padding-bottom: 5px;
+}
+.card-friend{
+
+}
+
+.caret {
+    border-width:0 8px 18px 8px;
+    border-style: solid;
+    border-color: transparent transparent #568BFF transparent;
+    display: inline-block;
+    transform: rotate(90deg);
+    position:absolute;
+    right:30px;
+
+}
+
+.container{
+  font-family: 'Roboto', sans-serif;
+}
+
+.flex-container{
+  font-family: 'Roboto', sans-serif;
+  background-color: #F8FFFF;
+}
+.page{
+  font-family: 'Roboto', sans-serif;
+  background-color: #F8FFFF;
+
+}
+.form-control {
+  font-family: 'Roboto', sans-serif;
+  border-radius: 15px;
+}
+
+.btn{
+  background-color: #568BFF;
+  border-radius: 10px;
+  border-color:#568BFF;
+  color:white;
+}
+
+.nav-link {
+  padding-right:10px;
+}

@@ -50,31 +50,18 @@ class ViewUserPosts extends Component {
 
     render(){
 
-        /*
-
-
-                <div className="post-card col-6 card">
-            <div className="card-body">
-                <h5 className="card-title">{title}</h5>
-                <p><Link to={`/user/${postOwnerId}`}>Posted by: {usernameOwner}</Link></p>
-                <Link to={`/post/view/${id}`} className="btn btn-outline-info">view post</Link>
-            </div>
-     
-
-        </div>
-        */
        let { posts, error, errorMessage } = this.state
        let postList
        if(posts.length === 0){
         postList = (
-               <div className="text-center">
-                   <h4>You have not posted yet</h4>
+               <div className="card">
+                   <h4>empty</h4>
                </div>
            )
        }else {
             postList = posts.map((val,i) => { 
                 return(
-                <div className="post-card col-6 card" key={i}>
+                <div className="post-card col-5 card" key={i}>
                     <div className="card-body">
                         <h5 className="card-title">{val.title}</h5>
                         <Link to={`/post/view/${val.id}`} className="btn btn-outline-info">view post</Link>
@@ -84,11 +71,10 @@ class ViewUserPosts extends Component {
             })      
         }
         return(
-        <div className="container user-comments-container">
-            <p>Post by you</p>
+        <div className="user-comments-container container text-center">
+        <h4>Posts</h4>
             <div className="row"> 
             {postList}
-
             </div>
         </div>
         )

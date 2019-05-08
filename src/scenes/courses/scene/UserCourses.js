@@ -26,7 +26,7 @@ class UserCourses extends Component {
                                 section: val.section
                             }       
                           }}
-                          className="btn btn-primary"/>
+                          className="caret"/>
                     </div>
                 </div>)
         })
@@ -43,8 +43,9 @@ class UserCourses extends Component {
             )
         }
         return(
-            <div> 
-                <h3>Here are your current classes</h3>
+            <div className="text-center"> 
+                <h4>Current classes</h4>
+                <Link to="/course/submit" className="btn">Add Class</Link>
                 {CoursesToRender}
             </div>
         )
