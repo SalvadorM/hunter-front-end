@@ -13,6 +13,7 @@ class RequestUserView extends Component{
     }
 
     render(){
+        console.log(this.props)
         return(
             <li className="list-group-item d-flex justify-content-between align-items-center">
             {this.props.user.username}

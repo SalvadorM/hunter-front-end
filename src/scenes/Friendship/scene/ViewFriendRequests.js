@@ -28,9 +28,10 @@ class ViewFriendRequests extends Component {
         try{
             let friendReqRes = await getUserFriendRequestList()
             let friendRequestList = friendReqRes.data.map(val => {
+                console.log(val)
                 let user = {
-                    username: val.user.username,
-                    userId: val.user.id
+                    username: val.username,
+                    userId: val.id
                 }
                 return user
             })
