@@ -84,7 +84,7 @@ class ViewFriendRequests extends Component {
 
         let requestList
         if(friendRequestList.length === 0){
-            requestList = ( <li className="list-group-item d-flex justify-content-between align-items-center">empty</li> )
+            requestList = ( <div className="card text-center">No new friend request</div> )
         } else if( cbResponce ){
             return(<Redirect to={`/profile/${acceptedUserId}`} />)
         }else {
@@ -93,12 +93,10 @@ class ViewFriendRequests extends Component {
             })
         }
         return(
-            <div className="FR-container text-center">
-            <h3>Show request list</h3>
+            <div className="text-center">
+            <h4>Friend Requests</h4>
                 <div className="">
-                    <ul className="list-group">
                     {requestList}
-                    </ul>
                 </div>
             </div>
         )

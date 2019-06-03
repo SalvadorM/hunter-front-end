@@ -1,16 +1,21 @@
 $break-mobile: 420px;
 $break-desktop: 776px;
 
+.navbar {
+    height: 60px;
+}
+
 .navbar-nav {
-    background-color: #7D7C7C;
     display: none;
 }
 
 .nav-item {
+    background-color: #7D7C7C;
     display: inline-block;
     padding-right: 10px;
     padding-left: 10px;
-    border:solid black 2px;
+    margin-right: .4em;
+    border:solid black 1px;
 }
 
 .toggleMenu {
@@ -18,7 +23,18 @@ $break-desktop: 776px;
 
 }
 
+.nav-link  {
+    padding: .3em 1em;
+
+}
+
+#menu-icon-close {
+    color: white;
+}
+
 @media screen and (min-width:$break-desktop){
+
+
     .navbar-nav {
         display: inline-block;
     }

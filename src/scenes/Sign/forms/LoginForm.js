@@ -57,11 +57,6 @@ class LoginForm extends Component {
                 })
         }
     } 
-    userLogOut = async (e) => {
-        e.preventDefault()
-        const responce = await Auth.signOut()
-        console.log(responce)
-    }  
     render(){  
 
         const {loading, error, cbResponce } = this.state
@@ -86,7 +81,6 @@ class LoginForm extends Component {
             <br/>
             <br/>
 
-            <button type="submit" className="btn btn-primary" onClick={this.userLogOut}>log out user</button>
 
             </form>
         </div>
