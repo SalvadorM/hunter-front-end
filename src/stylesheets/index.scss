@@ -13,14 +13,6 @@ body, html {
 
 .card{
   border-radius: 10px;
-  margin-top:2.5px;
-  margin-left:10px;
-  margin-right: 10px;
-  margin-bottom: 2.5px;
-  padding:0px;
-  padding-bottom: 5px;
-}
-.card-friend{
 
 }
 
@@ -49,17 +41,62 @@ body, html {
 
 }
 .form-control {
-  font-family: 'Roboto', sans-serif;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .btn{
-  background-color: #568BFF;
   border-radius: 10px;
-  border-color:#568BFF;
   color:white;
 }
 
-.nav-link {
-  padding-right:10px;
+
+/*
+landing page
+*/
+
+.jumbo-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.img-container {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+
+  img {
+    margin-top: 4em;
+    height: 90vh;
+    margin: auto;
+  }
+}
+
+.info-section {
+  position: relative;
+  top: 10;
+  left: 50%;
+}
+
+
+//information display for component 
+.information-badge {
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(rgba(250, 255, 255, 1), rgba(255,255,255,0));
+  font-weight: bold;
+  color: #212529;
+}
+
+
+
+
+//paddin-top containers 
+.friendlist-container, .courses-container, .fRequest-container, .posts-container, .comments-container {
+  margin-top: 2em;
+}
+
+
+// course submit form 
+.btn-section {
+  margin-top: 2em;
 }

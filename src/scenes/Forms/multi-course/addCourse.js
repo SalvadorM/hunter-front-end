@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 
+//react router 
+import {Redirect} from 'react-router-dom'
+
 //components
 import SingleCourseForm from './singleCourseForm'
 
@@ -12,6 +15,7 @@ class AddCourse extends Component {
         this.state = {
             courses: this.props.courses,
             error: '',
+            formDone: false,
         }
     }
 
@@ -31,7 +35,10 @@ class AddCourse extends Component {
                     section: newCourseResponce.data.section,
 
                 }
-                this.props.addNewCourseInfo(newCourseInfo)
+                // this.props.addNewCourseInfo(newCourseInfo)
+                this.setState({
+                    formDone: true,
+                })
             }
             //some other error to handle  
          }
@@ -41,25 +48,26 @@ class AddCourse extends Component {
          }
     }
 
-    changeBackToSemester = () => {
-        this.props.changeToSemester()
-    }
-    
     render(){
         let currStp = this.props.courseStp
 
+        let {formDone} = this.state
+
+            
+        if(formDone){
+            return(<Redirect to="/" />)
+        }
+
         return(
-            <div> 
-            <div>
-            <button className="btn btn-primary text-center" onClick={this.changeBackToSemester}>Change Semester</button>
-            </div>               
+            <div>               
             <SingleCourseForm 
                 course={this.props.currentCourse}
                 courseStp={currStp}
                 courseInfoLen={this.props.courseInfoLen}
                 addNewUserCourse={this.addNewUserCourse}
+
             />
-            <button className="btn btn-primary text-center" onClick={this.props.nextStp}>Done</button>
+            {/* <button className="btn btn-primary text-center" onClick={this.props.nextStp}>Done</button> */}
 
             </div>
 

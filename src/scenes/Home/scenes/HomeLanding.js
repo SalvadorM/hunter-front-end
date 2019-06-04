@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
 
-//functions 
+//comp 
 import {getCurrentClasses} from '../functions/index'
 import UserCourses from '../../courses/scene/UserCourses';
 import ViewUserFriends from '../../Friendship/scene/ViewUserFriends';
@@ -44,7 +44,9 @@ class Home extends Component {
         e.preventDefault()
         const {season , year} = this.state
         const field = e.target.name
+
         this.setState({[field]: e.target.value})
+
         if(field == 'season'){
             this.getUserCourse(e.target.value, year)
         }else{
@@ -77,11 +79,15 @@ class Home extends Component {
                     </div>
         
                     <UserCourses courses={classes} season={season} year={year}/>
+                    
+                    <ViewFriendRequests />
 
                     <ViewUserFriends currentUser={currentUser} profileView={false}/>
-                    <ViewFriendRequests />
+
                     <ViewUserPosts currentUser={currentUser} />
+
                     <ViewUserComments currentUser={currentUser} />
+
                 </div>
             </div>
         )

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import './stylesheets/index.css'
+import './stylesheets/index.scss'
 
 //components
 import UserForm from './scenes/Sign/index'
@@ -11,6 +11,7 @@ import CourseScene from './scenes/courses/scene/CourseScene'
 import CreatePost from './scenes/post/scene/CreatePost'
 import PostScene from './scenes/post/scene/PostScene'
 import ViewUserProfle from './scenes/User/Scene/ViewUserProfile'
+import LandingMain from './scenes/Home/scenes/LandingMain'
 
 //private router
 import {PrivateRouter} from './utilities/privateRouter'
@@ -18,12 +19,15 @@ import {PrivateRouter} from './utilities/privateRouter'
 
 
 class App extends Component {
+
   render() {
+
     return (
-      <div className="">
+      <div>
       <NavBar />
       <Switch>
         <Route exact path="/user/:page"  component={UserForm}/>
+        <Route exact path="/" component={LandingMain} />
         <PrivateRouter exact path="/home" component={Home} />
         <PrivateRouter exact path="/profile/:userid" component={ViewUserProfle} />
         <PrivateRouter exact path="/course/submit/" component={CourseForm} />

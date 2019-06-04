@@ -43,9 +43,9 @@ class UserCourses extends Component {
             )
         }
         return(
-            <div className="text-center"> 
+            <div className="courses-container text-center"> 
                 <h4>Current classes</h4>
-                <Link to="/course/submit" className="btn">Add Class</Link>
+                <Link to="/course/submit" className="btn btn-primary">Add Class</Link>
                 {CoursesToRender}
             </div>
         )

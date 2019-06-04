@@ -35,7 +35,6 @@ class ViewFriendRequests extends Component {
                 }
                 return user
             })
-            console.log(friendReqRes)
             if(friendReqRes.status === 200){
                 this.setState({
                     friendRequestList
@@ -80,11 +79,12 @@ class ViewFriendRequests extends Component {
     }
 
     render(){
+
         let {friendRequestList, cbResponce, acceptedUserId} = this.state
 
         let requestList
         if(friendRequestList.length === 0){
-            requestList = ( <div className="card text-center">No new friend request</div> )
+            requestList = (<span />)
         } else if( cbResponce ){
             return(<Redirect to={`/profile/${acceptedUserId}`} />)
         }else {
@@ -93,11 +93,16 @@ class ViewFriendRequests extends Component {
             })
         }
         return(
-            <div className="text-center">
-            <h4>Friend Requests</h4>
+            <div className="fRequest-container text-center">
+
+                <div className="information-badge">
+                        Friend Request <span className="badge">{friendRequestList.length}</span>
+                </div>
+
                 <div className="">
                     {requestList}
                 </div>
+                
             </div>
         )
     }

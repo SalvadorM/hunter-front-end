@@ -56,11 +56,13 @@ class CreateNote extends Component{
             }
             else{
                 return(
-                    <div>
+                    <div className="posts-container text-center">
                         <h2>Post a new note</h2>
-                        <Link to="/home" className="btn btn-outline-danger ">Cancel</Link>
         
                         <PostForm  createNewClassPost={this.createNewClassPost} />
+
+                        <Link to="/home" className="btn btn-danger ">Cancel</Link>
+
                     </div>
                 )
             }

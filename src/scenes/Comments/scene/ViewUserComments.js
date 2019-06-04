@@ -50,30 +50,34 @@ class ViewUserComments extends Component {
 
        let { comments, error, errorMessage } = this.state
        let commentList
-       if(comments.length === 0){
-        commentList = (
-               <div className="">
-                   <h5>No comments</h5>
-               </div>
-           )
-       }else {
+       if (comments.length === 0) {
+
+        commentList = (<span />)
+
+       } else {
         commentList = comments.map((val,i) => { 
+
             return(
-                <div className="post-card col-5 card" key={i}>
-                <div className="card-body">
-                    <h5 className="card-title text-truncate">{val.body}</h5>
-                    <Link to={`/post/view/${val.postId}`} className="btn btn-outline-info">view comment</Link>
+                <div className="col-6" key={i}>
+                    <div className="post-card card">
+                        <div className="card-body">
+                        <h5 className="card-title text-truncate">{val.body}</h5>
+                        <Link to={`/post/view/${val.postId}`} className="btn btn-outline-info">view</Link>
+                        </div>
+                    </div>
                 </div>
-            </div>
             )
         })
             
        }        
         return(
-            <div className="container user-comments-container text-center">
-                <h4>Comments</h4>
-                <div className="row">
-                {commentList}
+            <div className="comments-container text-center">
+                <div className="information-badge">
+                    Comments <span className="badge">{comments.length}</span>
+                </div>
+                <div className="container">
+                    <div className="row">{commentList}</div>
+
                 </div>
             </div>
         )
