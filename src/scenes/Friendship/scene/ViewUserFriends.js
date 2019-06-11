@@ -68,9 +68,9 @@ class ViewUserFriends extends Component {
         let friendList
         if(friends.length === 0){
             friendList = (
-                <div className="text-center">
-                    <h4>No friends</h4>
-                    <p>Find friends</p>
+                <div className="post-card card">
+                    <div className="card-body"><p className="card-text">Find friends through classes</p></div>
+                    
                 </div>
             )
         }else {
@@ -79,7 +79,9 @@ class ViewUserFriends extends Component {
 
         return(
             <div className="friendlist-container text-center">
-                <h4>Friends</h4>
+                <div className="information-badge">
+                    Friends <span className="badge">{friends.length}</span>
+                </div>
                 {friendList}
             </div>
         )

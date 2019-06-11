@@ -28,13 +28,13 @@ class ViewFriendRequests extends Component {
         try{
             let friendReqRes = await getUserFriendRequestList()
             let friendRequestList = friendReqRes.data.map(val => {
+                console.log(val)
                 let user = {
-                    username: val.user.username,
-                    userId: val.user.id
+                    username: val.username,
+                    userId: val.id
                 }
                 return user
             })
-            console.log(friendReqRes)
             if(friendReqRes.status === 200){
                 this.setState({
                     friendRequestList
@@ -79,11 +79,12 @@ class ViewFriendRequests extends Component {
     }
 
     render(){
+
         let {friendRequestList, cbResponce, acceptedUserId} = this.state
 
         let requestList
         if(friendRequestList.length === 0){
-            requestList = ( <li className="list-group-item d-flex justify-content-between align-items-center">empty</li> )
+            requestList = (<span />)
         } else if( cbResponce ){
             return(<Redirect to={`/profile/${acceptedUserId}`} />)
         }else {
@@ -92,13 +93,16 @@ class ViewFriendRequests extends Component {
             })
         }
         return(
-            <div className="FR-container text-center">
-            <h3>Show request list</h3>
-                <div className="">
-                    <ul className="list-group">
-                    {requestList}
-                    </ul>
+            <div className="fRequest-container text-center">
+
+                <div className="information-badge">
+                        Friend Request <span className="badge">{friendRequestList.length}</span>
                 </div>
+
+                <div className="">
+                    {requestList}
+                </div>
+                
             </div>
         )
     }

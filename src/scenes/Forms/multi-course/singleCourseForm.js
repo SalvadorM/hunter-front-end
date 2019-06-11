@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-//react router 
-import {Link} from 'react-router-dom'
+
 
 
 class SingleCourseForm extends Component {
@@ -12,6 +11,7 @@ class SingleCourseForm extends Component {
             information: '',
             section: '',
         }
+
     }
     addUserCourse = (e) => {
         e.preventDefault()
@@ -24,6 +24,7 @@ class SingleCourseForm extends Component {
                     information: '',
                     section: '',
                 })
+        
     }
 
     onChange = (e) => {
@@ -33,11 +34,11 @@ class SingleCourseForm extends Component {
     }
     render(){  
         
-        let {classCode, className, information, section} = this.state
-    
+        let {classCode, className, information, section, } = this.state
+
         return(
         <div className="container text-center">
-            <h1>New Course</h1>
+            <h2>New Course</h2>
 
             <label className="">Enter classCode: </label>
             <input name="classCode"

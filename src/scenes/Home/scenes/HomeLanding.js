@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
 
-//functions 
+//comp 
 import {getCurrentClasses} from '../functions/index'
 import UserCourses from '../../courses/scene/UserCourses';
 import ViewUserFriends from '../../Friendship/scene/ViewUserFriends';
@@ -44,7 +44,9 @@ class Home extends Component {
         e.preventDefault()
         const {season , year} = this.state
         const field = e.target.name
+
         this.setState({[field]: e.target.value})
+
         if(field == 'season'){
             this.getUserCourse(e.target.value, year)
         }else{
@@ -53,19 +55,21 @@ class Home extends Component {
     }   
 
     render(){
-        console.log('etet')
         const { username, season, year, classes} = this.state
         let currentUser = localStorage.getItem('userId')
         return(
             <div className="container">
                 <div className="jumbotron">
-                    <div className="col-12-xs">
+                    <div className="col-12-xs text-center">
+                    <h1>Hi {username}!</h1>
+
                     <select className="form-control" name="season" value={season} onChange={this.onchange}>
                         <option value="spring">Spring</option>
                         <option value="fall">Fall</option>
                         <option value="summer">Summer</option>
                         <option value="winter">Winter</option>
                     </select>
+
                     <select className="form-control" name="year" value={year} onChange={this.onchange}>
                         <option value="2019">2019</option>
                         <option value="2018">2018</option>
@@ -73,13 +77,17 @@ class Home extends Component {
                         <option value="2016">2016</option>
                     </select>
                     </div>
-                    <h1>Hello {username}</h1>
+        
                     <UserCourses courses={classes} season={season} year={year}/>
-                    <h3>find friends </h3>
-                    <ViewUserFriends currentUser={currentUser} profileView={false}/>
+                    
                     <ViewFriendRequests />
+
+                    <ViewUserFriends currentUser={currentUser} profileView={false}/>
+
                     <ViewUserPosts currentUser={currentUser} />
+
                     <ViewUserComments currentUser={currentUser} />
+
                 </div>
             </div>
         )

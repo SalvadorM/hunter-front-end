@@ -78,7 +78,6 @@ class CourseForm extends Component {
             case 1:
                 return(
                     <div className="container">
-                        <h1 className="display-4">Add Courses</h1>
                         <AddCourse 
                             semester={semesterInfo}
                             year={year}

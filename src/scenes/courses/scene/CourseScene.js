@@ -128,11 +128,11 @@ class CourseScene extends Component {
                 <br />
             </div>
             
-            <div className="students-container">
+            <div className="students-container text-center">
                 <h3>Students</h3>
                 {renderStudents}
             </div>
-            <div className="posts-container container">
+            <div className="posts-container container text-center">
                 <Link to={{ pathname: `/post/${classCode}`, state: { className } }} className="btn btn-info">Create Post</Link>
                 
                 <h3>posts</h3>
