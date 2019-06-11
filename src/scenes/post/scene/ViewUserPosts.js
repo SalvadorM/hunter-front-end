@@ -61,7 +61,7 @@ class ViewUserPosts extends Component {
                     <div className="post-card card">
                         <div className="card-body">
                             <h5 className="card-title">{val.title}</h5>
-                            <Link to={`/post/view/${val.id}`} className="btn btn-outline-info">view post</Link>
+                            <Link to={`/post/view/${val.id}`} className="btn btn-outline-primary btn-view">view post</Link>
                         </div>
                     </div>
                 </div>

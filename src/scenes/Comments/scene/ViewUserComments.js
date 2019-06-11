@@ -62,7 +62,7 @@ class ViewUserComments extends Component {
                     <div className="post-card card">
                         <div className="card-body">
                         <h5 className="card-title text-truncate">{val.body}</h5>
-                        <Link to={`/post/view/${val.postId}`} className="btn btn-outline-info">view</Link>
+                        <Link to={`/post/view/${val.postId}`} className="btn btn-outline-primary btn-view">view</Link>
                         </div>
                     </div>
                 </div>
