@@ -71,6 +71,7 @@ class ViewUserProfle extends Component {
         let PrivateSection 
 
         if(loggedUser === userProfileId) {
+            console.log('going home')
             return(<Redirect to="/home" />)
         } else if(!isFriends && cbResponce){
             PrivateSection = (
@@ -89,7 +90,7 @@ class ViewUserProfle extends Component {
 
         return(
             <div className="container user-profile-container">
-                <div className="jumbotron">
+                <div className="jumbotron text-center">
                 <h1 className="display-4">{profileInfo.username}</h1>
                 <hr className="my-4"/>
                 <p>{profileInfo.name}</p>

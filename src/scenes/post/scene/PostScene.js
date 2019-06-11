@@ -54,7 +54,7 @@ class PostScene extends Component {
         return(
             <div className="container">
                 <div className="user-container">
-                    <Link to={`/user/${usernameInfo.id}`}>{usernameInfo.username}</Link>
+                    <Link className="btn-user" to={`/profile/${usernameInfo.id}`}>{usernameInfo.username}</Link>
                 </div>
                 <div className="post-container text-center my-4">
                     <h1 className="display-4">{title}</h1>

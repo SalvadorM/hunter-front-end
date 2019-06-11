@@ -13,8 +13,8 @@ const PostCardView = (props) => {
         <div className="post-card card">
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>
-                <p><Link to={`/user/${postOwnerId}`}>Posted by: {usernameOwner}</Link></p>
-                <Link to={`/post/view/${id}`} className="btn btn-outline-info">view post</Link>
+                <p>By: <Link to={`/profile/${postOwnerId}`}>{usernameOwner}</Link></p>
+                <Link to={`/post/view/${id}`} className="btn btn-outline-primary btn-view">view post</Link>
             </div>
         </div>
         </div>

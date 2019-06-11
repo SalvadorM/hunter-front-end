@@ -49,8 +49,8 @@ class RegisterForm extends Component {
             try{
                 const accountResponce = await createUserAccount(accountInfo)
                 let resData = accountResponce.data
+                console.log(resData)
                 if(accountResponce.status === 200 && !resData.error){
-                    console.log(`account is unique`)
                     this.setState({
                         cbResponce: true,
                         error: false
@@ -91,16 +91,16 @@ class RegisterForm extends Component {
     render(){
         const {cbResponce, error, errorMessage} = this.state
 
-        let errorMessageView = (error)? <h2>{errorMessage}</h2> :<h2>Register Account</h2> 
+        let errorMessageView = (error)? <p>{errorMessage}</p> :<h2>Register Account</h2> 
 
         if(cbResponce){
             return(<Redirect to="/user/login" />)
         }   
         else {
             return(
-                <div>
+                <div className="container text-center">
                     <form>
-                        {errorMessageView}
+                    <div className="error-message">{errorMessageView}</div>
                     <div className="form-group">
                         <input type="text" name="name" className="form-control" onChange={this.onChange} placeholder="Name"></input>
                     </div>

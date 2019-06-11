@@ -57,20 +57,23 @@ class LoginForm extends Component {
                 })
         }
     } 
+
     render(){  
 
         const {loading, error, cbResponce } = this.state
 
         //handle error 
-        const errorMessage = (error)? <h2>{error}</h2> : <h2>Log In</h2>
+        const errorMessage = (error)? <p>{error}</p> : <h2>Log In</h2>
         
         //handle the loading btn info
         if(cbResponce) return (<Redirect to='/home' />)
 
         return(
-        <div>  
+        <div className="container text-center">  
             <form>
-                {errorMessage}
+
+            <div className="error-message">{errorMessage}</div>
+
             <div className="form-group">
                 <input name="username" type="text" className="form-control" onChange={this.onChange}  placeholder="username"></input>
             </div>
