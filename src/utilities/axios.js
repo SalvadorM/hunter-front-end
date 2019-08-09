@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-const websiteURL = `https://hunter-app-api.herokuapp.com/`
+// const websiteURL = `https://hunter-app-api.herokuapp.com/`
 
-// const devURL = `http://localhost:8000`
+const devURL = `http://localhost:8000`
 
 
 export default axios.create({
-    baseURL: websiteURL,
+    baseURL: devURL,
     withCredentials: true,
   })
