@@ -24,10 +24,7 @@ export default class ChatSessionContainer extends Component {
 	initSocket = () =>{
 		const socket = io(socketUrl)
 
-		socket.on('connect', ()=>{
-			console.log("Connected");
-		})
-		
+		socket.emit('chat message', {message: 'test', hi: 'hola'})
 		this.setState({socket})
 	}
 
