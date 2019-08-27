@@ -29,7 +29,9 @@ export default class ChatSessionContainer extends Component {
 	}
 
 
-
+	sendNewMessage = () => {
+		
+	}
 
 
 	render() {
