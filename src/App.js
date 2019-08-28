@@ -29,7 +29,7 @@ class App extends Component {
       <Switch>
         <Route exact path="/user/:page"  component={UserForm}/>
         <Route exact path="/" component={LandingMain} />
-        <Route exact path="/chat" component={ChatSessionContainer} />
+        <Route exact path="/chat/:chatid" component={ChatSessionContainer} />
 
         <PrivateRouter exact path="/home" component={Home} />
         <PrivateRouter exact path="/profile/:userid" component={ViewUserProfle} />

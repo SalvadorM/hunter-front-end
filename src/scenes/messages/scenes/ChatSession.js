@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import io from 'socket.io-client'
+import { isUserChatMember,} from '../functions/index'
+
 
 const socketUrl = "http://localhost:8000"
+
+
+
 
 export default class ChatSessionContainer extends Component {
 	
@@ -9,37 +14,63 @@ export default class ChatSessionContainer extends Component {
 	  super(props);
 	
 	  this.state = {
-	  	socket:null,
+		  socket:null,
+		  chatId: '',
 	  	user:null
 	  };
 	}
 
-	componentWillMount() {
-		this.initSocket()
+	async componentDidMount() {
+		try {
+			const chatId = this.props.match.params.chatid
+			const isMember = await isUserChatMember(chatId)
+			if(!isMember){
+				//not chat member 
+				this.props.history.push('/')
+			} else {
+				//is a chat member
+				console.log('member ')
+				this.initSocket(chatId)
+			}
+		} catch(e) {
+			console.log(e)
+		}
 	}
 
 	/*
 	*	Connect to and initializes the socket.
+	*	Add ChatId to Socket room
 	*/
-	initSocket = () =>{
+	initSocket = (chatId) =>{
 		const socket = io(socketUrl)
 
-		socket.emit('chat message', {message: 'test', hi: 'hola'})
-		this.setState({socket})
+		socket.emit('subscribe', {chatId})
+
+
+		socket.on('new message', (data) => {
+			console.log('inside new message')
+			console.log(data)
+		})
+		this.setState({socket, chatId})
 	}
 
 
 	sendNewMessage = () => {
-		
+		console.log('sending message')
+		const {socket, chatId} = this.state
+
+		socket.emit('send message', {chatId, msg: 'hi'})
 	}
 
 
 	render() {
-        const { socket } = this.state
-        console.log(socket)
 		return (
 			<div className="container">
                 TEST MESSAGE CONTAINER 
+				<br/>
+				<br/>
+
+				<button onClick={() => this.sendNewMessage()}> New message</button>
 			</div>
 		);
 	}
