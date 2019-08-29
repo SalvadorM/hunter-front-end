@@ -3,9 +3,15 @@ import axios from '../../../utilities/axios'
 
 export const getChatMessages = async (chatId) => {
     try {
+        const messages = await axios.get(`/chat/messages/${chatId}`)
 
+        if(messages.status === 200){
+            return messages.data
+        }
+        throw 'GET status was not 200'
     } catch(e) {
-
+        console.log(e)
+        return false 
     }
 }
 
@@ -17,13 +23,13 @@ export const createNewChat = async (otherUser) => {
     }
 }
 
-export const addChatMessage = async (message) => {
-    try{
+// export const addChatMessage = async (message) => {
+//     try{
 
-    } catch(e) {
+//     } catch(e) {
         
-    }
-}
+//     }
+// }
 
 export const getChatMembers = async (message) => {
     try{
