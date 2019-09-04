@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-
+// ADD CHAT SCREEN FOR USER
 //comp 
 import {getCurrentClasses} from '../functions/index'
 import UserCourses from '../../courses/scene/UserCourses';
@@ -8,6 +8,7 @@ import ViewUserFriends from '../../Friendship/scene/ViewUserFriends';
 import ViewUserComments from '../../Comments/scene/ViewUserComments'
 import ViewUserPosts from '../../post/scene/ViewUserPosts'
 import ViewFriendRequests from '../../Friendship/scene/ViewFriendRequests';
+import ChatScreen from '../../messages/scenes/ChatScreen';
 
 class Home extends Component {
     constructor(props){
@@ -79,6 +80,8 @@ class Home extends Component {
                     </div>
         
                     <UserCourses courses={classes} season={season} year={year}/>
+
+                    <ChatScreen />
                     
                     <ViewFriendRequests />
 

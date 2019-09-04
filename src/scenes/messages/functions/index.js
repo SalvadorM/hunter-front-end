@@ -23,22 +23,6 @@ export const createNewChat = async (otherUser) => {
     }
 }
 
-// export const addChatMessage = async (message) => {
-//     try{
-
-//     } catch(e) {
-        
-//     }
-// }
-
-export const getChatMembers = async (message) => {
-    try{
-
-    } catch(e) {
-        
-    }
-}
-
 export const getUserChats = async () => {
     try{
 
@@ -54,5 +38,21 @@ export const isUserChatMember = async (chatId) => {
     } catch(e) {
       console.log(e)
       return false  
+    }
+}
+
+export const getChatInfo = async (chatId) => {
+    try{
+        const chatInfoRes = await axios.get(`/chat/info/${chatId}`)
+        
+        if(chatInfoRes.status === 200) {
+            return chatInfoRes.data 
+        }
+
+        throw 'Responce status is not succesful'
+        
+    }catch (e) {
+        console.log(e)
+        return false
     }
 }

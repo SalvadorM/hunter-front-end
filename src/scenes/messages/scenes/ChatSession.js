@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import io from 'socket.io-client'
-import { isUserChatMember, getChatMessages,} from '../functions/index'
+import { isUserChatMember, getChatMessages, getChatInfo,} from '../functions/index'
 
+//styles 
+import '../../../stylesheets/chat.scss'
 //components
 import Messages from '../components/Messages'
 
@@ -26,6 +28,7 @@ export default class ChatSessionContainer extends Component {
 		userId: localStorage.getItem('userId'),
 		messageInput: '',
 		messages: [],
+		chatName: ''
 	  };
 	}
 
@@ -39,14 +42,18 @@ export default class ChatSessionContainer extends Component {
 			} else {
 				//is a chat member
 				const messages = await getChatMessages(chatId)
-				this.initSocket(chatId, messages)
+				const chatInfo = await getChatInfo(chatId)
+				const chatNameSplit = chatInfo.chatName.split('-')
+				const chatName = `Chatting with ${chatNameSplit[2]}`
+
+				this.initSocket(chatId, messages, chatName)
 			}
 		} catch(e) {
 			console.log(e)
 		}
 	}
 
-	initSocket = async (chatId, messages) =>{
+	initSocket = async (chatId, messages, chatName) =>{
 		const socket = io(socketUrl)
 		const {userId} = this.state
 
@@ -55,7 +62,6 @@ export default class ChatSessionContainer extends Component {
 
 		socket.on('new message', async (data) => {
 			try{
-				console.log('fetch the new messages')
 				const messages =  await getChatMessages(chatId)
 				this.setState({messages})
 			} catch(e) {
@@ -63,7 +69,7 @@ export default class ChatSessionContainer extends Component {
 			}
 		})
 
-		this.setState({socket, chatId, messages})
+		this.setState({socket, chatId, messages, chatName})
 	}
 
 	onChange = (e) => {
@@ -71,7 +77,6 @@ export default class ChatSessionContainer extends Component {
 	}
 
 	sendNewMessage = () => {
-		console.log('sending message')
 		const {socket, chatId, userId, messageInput} = this.state
 		if(messageInput.length !== 0){
 			socket.emit('send message', {chatId, userId, message: messageInput})
@@ -79,27 +84,35 @@ export default class ChatSessionContainer extends Component {
 		}
 	}
 
+	onKeyDwn = (e) => {
+		if (e.key === 'Enter') {
+			this.sendNewMessage()
+		}
+	}
+
 	render() {
-		const {messageInput, messages} = this.state 
+		const {messageInput, messages, chatName} = this.state 
 		return (
 			<div className="container">
-                TEST MESSAGE CONTAINER 
-				<br/>
-				<br/>
+					<div className="title-container">
+						<h2 className="chat-name">{chatName}</h2>
+
+					</div>
 					<div className="chat-container">
-						{/* Message array goes here */}
 						<Messages messages={messages} />
 					</div>
 
-                    <div className="col-12"> 
-						<input className="form-control"
+                    <div className="input-container"> 
+						<input className="form-control text-area"
 							onChange = { (e) => this.onChange(e)}
 							value={messageInput}
+							onKeyDown={(e) => this.onKeyDwn(e)}
 							required></input>
+						
+						<button className="send-btn" onClick={() => this.sendNewMessage()}>Send</button>
+
 					</div>
 
-
-				<button onClick={() => this.sendNewMessage()}>Send</button>
 			</div>
 		);
 	}
