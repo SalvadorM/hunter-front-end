@@ -27,6 +27,7 @@ class NavBar extends Component {
     handleLogOut = async (e) => {
         e.preventDefault()
         const responce = await Auth.signOut()
+        console.log(responce)
         this.setState((prev) => ({
             menuToggle: !prev.menuToggle
         }))

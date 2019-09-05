@@ -48,7 +48,7 @@ class ViewUserComments extends Component {
 
     render(){
 
-       let { comments, error, errorMessage } = this.state
+       let { comments } = this.state
        let commentList
        if (comments.length === 0) {
 

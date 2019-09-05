@@ -12,6 +12,7 @@ import ViewUserFriends from '../../Friendship/scene/ViewUserFriends';
 import ViewUserComments from '../../Comments/scene/ViewUserComments'
 import ViewUserPosts from '../../post/scene/ViewUserPosts'
 import PrivateFriendComponent from '../../Friendship/components/PrivateFriendComponent'
+import NewChatScreen from '../../messages/components/NewChatMessage';
 
 class ViewUserProfle extends Component {
     constructor(props){
@@ -44,7 +45,7 @@ class ViewUserProfle extends Component {
         try{
             let { loggedUser, userProfileId } = this.state
             
-            if(loggedUser != userProfileId) {
+            if(loggedUser !== userProfileId) {
                 let isFriendRes = await isFriends(userProfileId)       
                 let profileInfoRes = await getProfileInfo(userProfileId)
 
@@ -84,6 +85,7 @@ class ViewUserProfle extends Component {
         } else if (isFriends && cbResponce){
             PrivateSection = (
                 <div>
+                <NewChatScreen otherUserId={userProfileId} />
                 <ViewUserFriends currentUser={userProfileId} profileView={true}/>
                 <ViewUserPosts currentUser={userProfileId} />
                 <ViewUserComments currentUser={userProfileId} />

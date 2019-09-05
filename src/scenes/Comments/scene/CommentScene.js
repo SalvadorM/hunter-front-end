@@ -49,8 +49,7 @@ class CommentScene extends Component {
     }
 
     render(){
-        let { comments, error, errorMessage, postId } = this.state
-
+        let { comments, postId } = this.state
 
         return(
             <div className="comment-container">

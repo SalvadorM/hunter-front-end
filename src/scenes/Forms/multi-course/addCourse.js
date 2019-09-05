@@ -29,13 +29,13 @@ class AddCourse extends Component {
          try{
             const newCourseResponce = await addNewUserCourse(courseToAdd)
             if(newCourseResponce.status === 200){
-                const newCourseInfo = {
-                    courseId: newCourseResponce.data.id,
-                    className: newCourseResponce.data.className,
-                    section: newCourseResponce.data.section,
+                // const newCourseInfo = {
+                //     courseId: newCourseResponce.data.id,
+                //     className: newCourseResponce.data.className,
+                //     section: newCourseResponce.data.section,
 
-                }
-                // this.props.addNewCourseInfo(newCourseInfo)
+                // }
+                // // this.props.addNewCourseInfo(newCourseInfo)
                 this.setState({
                     formDone: true,
                 })

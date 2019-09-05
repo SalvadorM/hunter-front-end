@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 class UserCourses extends Component {
-    constructor(props){
-        super(props)
-    }
 
     render(){
         let { season, year } = this.props

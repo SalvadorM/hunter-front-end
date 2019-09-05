@@ -8,7 +8,7 @@ export const getChatMessages = async (chatId) => {
         if(messages.status === 200){
             return messages.data
         }
-        throw 'GET status was not 200'
+        throw new Error('GET status was not 200')
     } catch(e) {
         console.log(e)
         return false 
@@ -21,7 +21,7 @@ export const createNewChat = async (otherUserId) => {
         if(newChatRes.status === 200) {
             return newChatRes.data
         }
-        throw 'Responce status is not succesful'
+        throw new Error('GET status was not 200')
     } catch(e) {
         console.log(e)
         return false
@@ -34,7 +34,7 @@ export const getUserChats = async () => {
         if(userChatRes.status === 200){
             return userChatRes.data
         }
-        throw 'Responce status is not succesful'
+        throw new Error('GET status was not 200')
 
     } catch(e) {
         console.log(e)
@@ -60,9 +60,24 @@ export const getChatInfo = async (chatId) => {
             return chatInfoRes.data 
         }
 
-        throw 'Responce status is not succesful'
+        throw new Error('GET status was not 200')
         
     }catch (e) {
+        console.log(e)
+        return false
+    }
+}
+
+export const hasChatWith = async (otherUserId) => {
+    try{ 
+        const hasChatRes = await axios.get(`/chat/haschat/${otherUserId}`)
+
+        if(hasChatRes.status === 200){
+            return hasChatRes.data
+        }
+
+        throw new Error('GET status was not 200')
+    } catch(e) {
         console.log(e)
         return false
     }

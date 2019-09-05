@@ -4,9 +4,6 @@ import React , { Component } from 'react'
 // import { Link } from 'react-router-dom'
 
 class RequestUserView extends Component{
-    constructor(props){
-        super(props)
-    }
 
     acceptReq = () => {
         this.props.acceptFriendRequest(this.props.user.userId)

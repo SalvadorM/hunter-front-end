@@ -48,7 +48,7 @@ class Home extends Component {
 
         this.setState({[field]: e.target.value})
 
-        if(field == 'season'){
+        if(field === 'season'){
             this.getUserCourse(e.target.value, year)
         }else{
             this.getUserCourse(season, e.target.value)

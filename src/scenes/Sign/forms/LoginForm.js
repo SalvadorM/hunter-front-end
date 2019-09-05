@@ -60,7 +60,7 @@ class LoginForm extends Component {
 
     render(){  
 
-        const {loading, error, cbResponce } = this.state
+        const { error, cbResponce } = this.state
 
         //handle error 
         const errorMessage = (error)? <p>{error}</p> : <h2>Log In</h2>

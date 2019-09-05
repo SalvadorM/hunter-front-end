@@ -64,7 +64,7 @@ class ViewUserFriends extends Component {
 
     render(){
          
-        let { friends, error, errorMessage } = this.state
+        let { friends } = this.state
         let friendList
         if(friends.length === 0){
             friendList = (
