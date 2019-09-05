@@ -70,7 +70,6 @@ class ViewUserFriends extends Component {
             friendList = (
                 <div className="post-card card">
                     <div className="card-body"><p className="card-text">Find friends through classes</p></div>
-                    
                 </div>
             )
         }else {

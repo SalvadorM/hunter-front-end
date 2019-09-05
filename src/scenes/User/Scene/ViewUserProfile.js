@@ -36,6 +36,10 @@ class ViewUserProfle extends Component {
         this.setUserProfile()
     }
 
+    componentDidUpdate(){
+        this.setUserProfile()
+    }
+
     setUserProfile = async () => {
         try{
             let { loggedUser, userProfileId } = this.state

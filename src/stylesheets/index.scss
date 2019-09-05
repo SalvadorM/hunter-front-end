@@ -17,16 +17,20 @@ body, html {
 }
 
 .caret {
-    border-width:0 8px 18px 8px;
+    border-width: 10px 18px 18px 18px;
     border-style: solid;
     border-color: transparent transparent #568BFF transparent;
     display: inline-block;
-    transform: rotate(90deg);
     position:absolute;
+    transform: rotate(90deg);
     right:30px;
-
+    top: 45%;
 }
 
+.caret:hover {
+  border-color: transparent transparent rgb(0, 81, 255) transparent;
+
+}
 .container{
   font-family: 'Roboto', sans-serif;
 }

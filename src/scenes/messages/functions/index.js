@@ -15,19 +15,30 @@ export const getChatMessages = async (chatId) => {
     }
 }
 
-export const createNewChat = async (otherUser) => {
+export const createNewChat = async (otherUserId) => {
     try{
-
+        const newChatRes = await axios.post({otherUserId})
+        if(newChatRes.status === 200) {
+            return newChatRes.data
+        }
+        throw 'Responce status is not succesful'
     } catch(e) {
-        
+        console.log(e)
+        return false
     }
 }
 
 export const getUserChats = async () => {
     try{
+        const userChatRes = await axios.get(`/chat/userchats`)
+        if(userChatRes.status === 200){
+            return userChatRes.data
+        }
+        throw 'Responce status is not succesful'
 
     } catch(e) {
-        
+        console.log(e)
+        return false
     }
 }
 
