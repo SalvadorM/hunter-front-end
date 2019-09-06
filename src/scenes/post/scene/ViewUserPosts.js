@@ -50,7 +50,7 @@ class ViewUserPosts extends Component {
 
     render(){
 
-       let { posts, error, errorMessage } = this.state
+       let { posts } = this.state
        let postList
        if(posts.length === 0){
         postList = (<span/>)

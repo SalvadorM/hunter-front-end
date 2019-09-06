@@ -44,7 +44,8 @@ class UserForm extends Component {
         
         return(
         <div className="flex-container">
-            <div className="form-container">
+            <h3 className="help-message"><a href="https://github.com/SalvadorM/hunter-front-end" target="_blank">Find more information about how to user ClassHub </a></h3>
+
                 <div className="flex-item">
                 <div className="register-form">
                     <div className="form">
@@ -58,7 +59,6 @@ class UserForm extends Component {
                     </div>
                 </div>
                 </div>
-            </div>
         </div>
         )
 

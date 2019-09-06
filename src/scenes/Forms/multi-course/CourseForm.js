@@ -93,6 +93,8 @@ class CourseForm extends Component {
                     year={year}
                 />
             )
+            default: 
+                console.log('Error no case')
         }
     }
 }

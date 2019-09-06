@@ -12,6 +12,7 @@ import ViewUserFriends from '../../Friendship/scene/ViewUserFriends';
 import ViewUserComments from '../../Comments/scene/ViewUserComments'
 import ViewUserPosts from '../../post/scene/ViewUserPosts'
 import PrivateFriendComponent from '../../Friendship/components/PrivateFriendComponent'
+import NewChatScreen from '../../messages/components/NewChatScreen';
 
 class ViewUserProfle extends Component {
     constructor(props){
@@ -19,7 +20,7 @@ class ViewUserProfle extends Component {
 
         this.state = {
             loggedUser: localStorage.getItem('userId'),
-            userProfileId: this.props.match.params.userid,
+            userProfileId: '',
             error: false,
             errorMessage: '',
             profileInfo: {
@@ -36,11 +37,16 @@ class ViewUserProfle extends Component {
         this.setUserProfile()
     }
 
+    componentDidUpdate(prevProps, ){
+        if(prevProps.location.pathname !== this.props.location.pathname) {
+            this.setUserProfile()
+        }
+    }
+
     setUserProfile = async () => {
         try{
-            let { loggedUser, userProfileId } = this.state
-            
-            if(loggedUser != userProfileId) {
+            const userProfileId = this.props.match.params.userid
+
                 let isFriendRes = await isFriends(userProfileId)       
                 let profileInfoRes = await getProfileInfo(userProfileId)
 
@@ -54,9 +60,9 @@ class ViewUserProfle extends Component {
                     isFriends: isFriendRes,
                     cbResponce: true,
                     profileInfo, 
+                    userProfileId: this.props.match.params.userid,
                 })
-                
-            }
+
 
         }
         catch(err){
@@ -71,22 +77,25 @@ class ViewUserProfle extends Component {
         let PrivateSection 
 
         if(loggedUser === userProfileId) {
-            console.log('going home')
+
             return(<Redirect to="/home" />)
+
         } else if(!isFriends && cbResponce){
+
             PrivateSection = (
                 <PrivateFriendComponent profileUserId={userProfileId} username={profileInfo.username} />
             )
+
         } else if (isFriends && cbResponce){
             PrivateSection = (
                 <div>
+                <NewChatScreen otherUserId={userProfileId} />
                 <ViewUserFriends currentUser={userProfileId} profileView={true}/>
                 <ViewUserPosts currentUser={userProfileId} />
                 <ViewUserComments currentUser={userProfileId} />
                 </div>
             )
         }
-        
 
         return(
             <div className="container user-profile-container">
@@ -103,6 +112,7 @@ class ViewUserProfle extends Component {
                 </div>
             </div>
         )
+         
     }
 }
 

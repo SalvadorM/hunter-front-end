@@ -48,7 +48,7 @@ class PrivateFriendComponent extends Component{
     }
 
     render(){
-        let { username, error, errorMessage, cbResponce} = this.state
+        let { username, cbResponce} = this.state
 
         let messageBody = (
             <div className="card-body">

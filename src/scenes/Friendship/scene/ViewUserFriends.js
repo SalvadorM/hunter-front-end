@@ -18,16 +18,21 @@ class ViewUserFriends extends Component {
 
     }
 
-
     componentDidMount(){
         this.getUserFriendlist()
     }
 
+
+    componentDidUpdate(prevProps){
+        if(prevProps.currentUser !== this.props.currentUser){
+            this.getUserFriendlist()
+        }
+    }
+
+
     getUserFriendlist = async () => {
         try{
             let { currentUser, profileView} = this.props
-
-
             let friendRes 
             if(!profileView){
                 friendRes = await getUserFriendlist(currentUser)
@@ -64,13 +69,12 @@ class ViewUserFriends extends Component {
 
     render(){
          
-        let { friends, error, errorMessage } = this.state
+        let { friends } = this.state
         let friendList
         if(friends.length === 0){
             friendList = (
                 <div className="post-card card">
                     <div className="card-body"><p className="card-text">Find friends through classes</p></div>
-                    
                 </div>
             )
         }else {

@@ -12,6 +12,7 @@ import CreatePost from './scenes/post/scene/CreatePost'
 import PostScene from './scenes/post/scene/PostScene'
 import ViewUserProfle from './scenes/User/Scene/ViewUserProfile'
 import LandingMain from './scenes/Home/scenes/LandingMain'
+import ChatSessionContainer from './scenes/messages/scenes/ChatSession'
 
 //private router
 import {PrivateRouter} from './utilities/privateRouter'
@@ -28,6 +29,8 @@ class App extends Component {
       <Switch>
         <Route exact path="/user/:page"  component={UserForm}/>
         <Route exact path="/" component={LandingMain} />
+        <Route exact path="/chat/:chatid" component={ChatSessionContainer} />
+
         <PrivateRouter exact path="/home" component={Home} />
         <PrivateRouter exact path="/profile/:userid" component={ViewUserProfle} />
         <PrivateRouter exact path="/course/submit/" component={CourseForm} />

@@ -1,0 +1,103 @@
+$messageCardWidth: 70%;
+
+
+.chat-container {
+    width: 100%;
+    height: 70vh;
+}
+
+.input-container {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+
+    input {
+        margin-top: 1rem;
+    }
+}
+
+// inside Messages
+.messages {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    overflow: scroll;
+}
+
+.card-container {
+    width: $messageCardWidth;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid rgba(0,0,0,.2);
+    font-weight: 300;
+}
+
+.message-user, .message-body {
+    display: inline-block;
+}
+
+.message-user {
+    text-align: center;
+    float: left;
+    width: 20%;
+
+    a {
+        font-weight: bold;
+        font-size: 1rem;
+    }
+}
+
+.message-body {
+    float: right;
+    width: 80%;
+}
+
+.session-user {
+    float: right;
+    background-color:#d2e7fc;
+    margin-right: 5px;
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.49);
+
+}
+
+
+.me {
+    width: 100%;
+    text-align: center;
+}
+
+.other-user {
+    float: left;
+    background-color: #e7fcd2;
+    margin-left: 5px;
+    box-shadow: -2px 2px 1px 0px rgba(0,0,0,0.49);
+ 
+}
+
+.text-area {
+    background-color: rgba(0,0,0,.1);
+}
+
+// send button
+.send-btn {
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+// title
+.title-container {
+    padding: 5px;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+.chat-name {
+    color: #007bff;
+    font-weight: bold;
+}

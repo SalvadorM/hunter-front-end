@@ -4,7 +4,7 @@ import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 
 //images
-import classPictureBG from '../../../images/class-picture.jpeg'
+// import classPictureBG from '../../../images/class-picture.jpeg'
 
 class LandingMain extends Component {
 

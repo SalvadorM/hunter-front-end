@@ -16,6 +16,9 @@ class NavBar extends Component {
             menuToggle: false
         }
 
+        this.handleLogOut = this.handleLogOut.bind(this)
+        this.handleMenuToggle = this.handleMenuToggle.bind(this)
+
     }
 
     handleMenuToggle = () => {
@@ -27,6 +30,7 @@ class NavBar extends Component {
     handleLogOut = async (e) => {
         e.preventDefault()
         const responce = await Auth.signOut()
+        console.log(responce)
         this.setState((prev) => ({
             menuToggle: !prev.menuToggle
         }))
