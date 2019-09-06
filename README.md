@@ -5,6 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In this project you can add a course by a unique ID, which will create a new course or find a created course. In each course you can find friends which you can send friend request in order to add them to your friend list and send instant messages to them. Users can post notes to a course section in which other users can comment on the post. 
 
 * [ClassHub](https://classhub-hunter.herokuapp.com) -  ClassHub website on heroku server
+* [ClassHub - API](https://github.com/SalvadorM/hunter_app_api) -  ClassHub REST API
+
 
 ---
 ## Sample Accounts
