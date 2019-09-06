@@ -23,7 +23,6 @@ class CreateNote extends Component{
             let { classCode } = this.state
 
                 let postInfo = { title, body, classCode }
-                this.props.history.goBack()
                 let postResponce  = await createNewClassPost(postInfo)
                 if(postResponce.status === 200){
                     this.props.history.goBack()

@@ -18,16 +18,21 @@ class ViewUserFriends extends Component {
 
     }
 
-
     componentDidMount(){
         this.getUserFriendlist()
     }
 
+
+    componentDidUpdate(prevProps){
+        if(prevProps.currentUser !== this.props.currentUser){
+            this.getUserFriendlist()
+        }
+    }
+
+
     getUserFriendlist = async () => {
         try{
             let { currentUser, profileView} = this.props
-
-
             let friendRes 
             if(!profileView){
                 friendRes = await getUserFriendlist(currentUser)

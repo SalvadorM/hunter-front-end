@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 //functions
 import { createNewChat, hasChatWith } from '../functions/index'
 
-export default class NewChatScreen extends Component{
+class NewChatScreen extends Component{
     constructor(props){
         super(props)
 
-        this.class = {
-            hasChat: false,
+        this.state = {
+            hasChatWith: null,
             chadId: '',
         }
     }
@@ -18,11 +18,10 @@ export default class NewChatScreen extends Component{
         try{
             const otherUserId = this.props.otherUserId
             const hasChatRes = await hasChatWith(otherUserId)
-            console.log(hasChatRes)
-            // this.setState({
-            //     hasChat: hasChatRes.success,
-            //     chatId: hasChatRes.chatId
-            // })
+            this.setState({
+                hasChatWith: hasChatRes.success,
+                chatId: hasChatRes.chatId
+            })
         }
         catch(e){
             console.log(e)
@@ -31,29 +30,30 @@ export default class NewChatScreen extends Component{
 
     createChat = async () => {
         try {
-            const newChat = await createNewChat()
+            const otherUserId = this.props.otherUserId
+            const newChat = await createNewChat(otherUserId)
             console.log(newChat)
-
+            this.props.history.push(`/chat/${newChat.id}`)
         } catch(e) {
             console.log(e)
         }
     }
 
     render(){
-        const {hasChat, chatId} = this.state 
-        if(hasChat) {
+        const {hasChatWith, chatId} = this.state 
+        if(hasChatWith) {
             return(
-                <div>
-                    <Link to={`/chat/${chatId}`} />
+                <div className="text-center">
+                    <Link className="btn btn-primary mb-3" to={`/chat/${chatId}`}>Go to chat</Link>
                 </div>
             )
         } else {
             return (
-                <div> 
+                <div className="text-center"> 
                     <button onClick={() => this.createChat()} className="btn btn-primary">Send Message</button>
                 </div>
             )
         }
-
     }
 }
+export default withRouter(NewChatScreen)

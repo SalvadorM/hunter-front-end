@@ -16,6 +16,9 @@ class NavBar extends Component {
             menuToggle: false
         }
 
+        this.handleLogOut = this.handleLogOut.bind(this)
+        this.handleMenuToggle = this.handleMenuToggle.bind(this)
+
     }
 
     handleMenuToggle = () => {

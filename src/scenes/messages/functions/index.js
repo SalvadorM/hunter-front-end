@@ -17,7 +17,7 @@ export const getChatMessages = async (chatId) => {
 
 export const createNewChat = async (otherUserId) => {
     try{
-        const newChatRes = await axios.post({otherUserId})
+        const newChatRes = await axios.post(`/chat/messages/createchat`, {otherUserId})
         if(newChatRes.status === 200) {
             return newChatRes.data
         }
