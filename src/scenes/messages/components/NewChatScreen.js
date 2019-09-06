@@ -32,7 +32,6 @@ class NewChatScreen extends Component{
         try {
             const otherUserId = this.props.otherUserId
             const newChat = await createNewChat(otherUserId)
-            console.log(newChat)
             this.props.history.push(`/chat/${newChat.id}`)
         } catch(e) {
             console.log(e)
