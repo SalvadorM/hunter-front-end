@@ -18,6 +18,8 @@ In this project you can add a course by a unique ID, which will create a new cou
 ---
 ## Sample Course Section
 ```
+    season: spring 
+    year:   2019
     classCode: 101
     className: ClassHub
     section:   1
