@@ -102,7 +102,7 @@ class RegisterForm extends Component {
                     <form>
                     <div className="error-message">{errorMessageView}</div>
                     <div className="form-group">
-                        <input type="text" name="name" className="form-control" onChange={this.onChange} placeholder="Name"></input>
+                        <input type="text" name="name" className="form-control" onChange={this.onChange} placeholder="first name"></input>
                     </div>
         
                     <div className="form-group">

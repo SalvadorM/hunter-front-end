@@ -71,7 +71,6 @@ class LoginForm extends Component {
         return(
         <div className="container text-center">  
             <form>
-
             <div className="error-message">{errorMessage}</div>
 
             <div className="form-group">
