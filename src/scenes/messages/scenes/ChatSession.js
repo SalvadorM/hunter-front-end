@@ -7,7 +7,8 @@ import '../../../stylesheets/chat.scss'
 //components
 import Messages from '../components/Messages'
 
-const socketUrl = "http://localhost:8000"
+// const socketUrl = "http://localhost:8000"
+const socketUrlServer = `https://hunter-app-api.herokuapp.com/`
 
 /*
 	when creating a new chat make a modal with chat 
