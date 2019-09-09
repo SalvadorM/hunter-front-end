@@ -9,4 +9,7 @@ axios.defaults.withCredentials = true;
 export default axios.create({
     baseURL: websiteURL,
     withCredentials: true,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
   })
