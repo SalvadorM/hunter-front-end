@@ -56,6 +56,7 @@ export default class ChatSessionContainer extends Component {
 
 	initSocket = async (chatId, messages, chatName) =>{
 		const socket = io(socketUrlServer)
+		console.log(socket)
 		const {userId} = this.state
 
 		socket.emit('subscribe', {chatId, userId})
