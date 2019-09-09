@@ -15,7 +15,7 @@ const MessageView = (props) => {
 
              <div className="message-card">
                 <div className="message-user">
-                    <Link to={`/profile/${message.actionUser}`} >{message.actionUsername}</Link>
+                    <Link to={`/profile/${message.actionUser}`} >{message.actionUsername.split(0,6)}</Link>
                 </div>
                 <div className="message-body">{message.messageBody} </div>
 
