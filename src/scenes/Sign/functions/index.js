@@ -1,14 +1,13 @@
-import axios from '../../../utilities/axios'
-
+import Axios from '../../../utilities/axios'
 
 export const userLogin = (user) => {
-    return axios.post('/user/login', user, )
+    return Axios.post('/user/login', user, )
 }
 
 export const userLogOut = () => {
-    return axios.post('/user/logout')
+    return Axios.post('/user/logout')
 }
 
 export const createUserAccount = (userAccountInfo) => {
-    return axios.post('/user/create', userAccountInfo)
+    return Axios.post('/user/create', userAccountInfo)
 }
