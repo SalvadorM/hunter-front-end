@@ -15,11 +15,11 @@ export const authenticateUser = async (user) => {
     try{
         const loggedUser = await userLogin(user)
         const userData = loggedUser.data
-        console.log(document.cookie)
         //set info in localstorage 
         localStorage.setItem('userId', userData.id)
         localStorage.setItem('username', userData.username)
         localStorage.setItem('email',userData.email)
+        localStorage.setItem('cookie',userData.cookie)
         localStorage.setItem('isAuthenticated', 'true')
         localStorage.setItem('error', 'false')
         
