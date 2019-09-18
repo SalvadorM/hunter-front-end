@@ -59,6 +59,8 @@ class UserForm extends Component {
                     </div>
                 </div>
                 </div>
+                <h3 className="help-message2"><a href="https://github.com/SalvadorM/hunter-front-end#errors" className="bottom-message" target="_blank">App does not work properly in safari or mobile browsers </a></h3>
+
         </div>
         )
 
